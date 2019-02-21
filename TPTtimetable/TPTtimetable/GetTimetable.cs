@@ -42,7 +42,7 @@ namespace TPTtimetable
                     start = item.start,
                     end = item.end
                 };
-                timetable.Append(tund);
+                timetable.Add(tund);
             }
 
             return timetable;
