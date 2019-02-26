@@ -59,7 +59,7 @@ namespace TPTtimetable
         public string className { get; set; }
     }
 
-    class Tund
+    public class Tund
     {
         public string lessonname { get; set; }
         public string classname { get; set; }
