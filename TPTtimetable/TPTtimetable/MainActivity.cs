@@ -4,13 +4,14 @@ using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
 using System.Collections.Generic;
+using System;
 
 namespace TPTtimetable
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity
     {
-        public static List<Tund> TimeTable { get; set; }
+        public static SchoolWeek FullTimeTable { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -19,7 +20,8 @@ namespace TPTtimetable
             SetContentView(Resource.Layout.activity_main);
 
             GetTimetable getTimeTable = new GetTimetable();
-            TimeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226");
+            var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226");
+            FullTimeTable = getTimeTable.SortByDay(timeTable);
         }
     }
 }
