@@ -25,7 +25,7 @@ namespace TPTtimetable
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226");
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
-            list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+            list.Adapter = new ListAdapter(this, FullTimeTable.Tuesday);
         }
     }
 }
