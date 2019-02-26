@@ -25,7 +25,30 @@ namespace TPTtimetable
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226");
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
-            list.Adapter = new ListAdapter(this, FullTimeTable.Tuesday);
+            DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+
+            switch (currentDay)
+            {
+                case DayOfWeek.Monday:
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+                    break;
+                case DayOfWeek.Tuesday:
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Tuesday);
+                    break;
+                case DayOfWeek.Wednesday:
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Wednesday);
+                    break;
+                case DayOfWeek.Thursday:
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Thursday);
+                    break;
+                case DayOfWeek.Friday:
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Friday);
+                    break;
+                default:
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+                    break;
+            }
+
         }
     }
 }
