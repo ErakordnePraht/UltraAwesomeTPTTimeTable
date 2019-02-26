@@ -34,6 +34,13 @@ namespace TPTtimetable
                 string classname = teachername.Substring(teachername.IndexOf(';') + 2);
                 lessonname = lessonname.Substring(0, lessonname.IndexOf('<') - 1);
                 teachername = teachername.Substring(0, teachername.LastIndexOf(';'));
+                //Some lessons have an extra HTML element: "valikaine", this code removes it from the teachername variable.
+                //This also fixes classname.
+                if (teachername.Contains("valikaine"))
+                {
+                    teachername = teachername.Substring(teachername.IndexOf(';') + 2);
+                    classname = classname.Substring(classname.IndexOf(';') + 2);
+                }
 
                 Tund tund = new Tund()
                 {
