@@ -8,25 +8,35 @@
 		android:orientation="vertical"
 		android:minWidth="25px"
 		android:minHeight="25px"
-		android:layout_marginLeft="50dp"
 		android:layout_marginTop="10dp"
 		android:layout_width="276.5dp"
 		android:layout_height="wrap_content"
 		android:id="@+id/linearLayout1">
 		<TextView
+			android:text="Small Text1"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/textView4"
+			android:gravity="top"
+			android:layout_marginTop="5dp" />
+		<TextView
 			android:text="Large Text"
+			android:layout_marginLeft="50dp"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/textView1" />
 		<TextView
 			android:text="Large Text"
+			android:layout_marginLeft="50dp"
 			android:textAppearance="?android:attr/textAppearanceMedium"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/textView2" />
 		<TextView
 			android:text="Large Text"
+			android:layout_marginLeft="50dp"
 			android:textAppearance="?android:attr/textAppearanceLarge"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
@@ -38,23 +48,15 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:id="@+id/linearLayout2" >
-			<TextView
-				android:text="Small Text"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/textView4"
-				android:gravity="bottom"
-				android:layout_marginTop="15dp" />
-			<TextView
-				android:text="Small Text"
-				android:textAppearance="?android:attr/textAppearanceSmall"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/textView5"
-				android:layout_marginTop="15dp"
-				android:layout_gravity="top"
-				android:gravity="end|bottom|right" />
+		<TextView
+			android:text="Small Text2"
+			android:textAppearance="?android:attr/textAppearanceSmall"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/textView5"
+			android:layout_marginTop="15dp"
+			android:layout_gravity="top"
+			android:gravity="bottom" />
 		</LinearLayout>
 	</LinearLayout>
 </RelativeLayout>

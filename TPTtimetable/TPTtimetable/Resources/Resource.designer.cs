@@ -2579,8 +2579,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080099
 			public const int linearLayout1 = 2131230873;
 			
-			// aapt resource value: 0x7f08009d
-			public const int linearLayout2 = 2131230877;
+			// aapt resource value: 0x7f08009e
+			public const int linearLayout2 = 2131230878;
 			
 			// aapt resource value: 0x7f08001d
 			public const int listMode = 2131230749;
@@ -2789,17 +2789,17 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080069
 			public const int textSpacerNoTitle = 2131230825;
 			
-			// aapt resource value: 0x7f08009a
-			public const int textView1 = 2131230874;
-			
 			// aapt resource value: 0x7f08009b
-			public const int textView2 = 2131230875;
+			public const int textView1 = 2131230875;
 			
 			// aapt resource value: 0x7f08009c
-			public const int textView3 = 2131230876;
+			public const int textView2 = 2131230876;
 			
-			// aapt resource value: 0x7f08009e
-			public const int textView4 = 2131230878;
+			// aapt resource value: 0x7f08009d
+			public const int textView3 = 2131230877;
+			
+			// aapt resource value: 0x7f08009a
+			public const int textView4 = 2131230874;
 			
 			// aapt resource value: 0x7f08009f
 			public const int textView5 = 2131230879;
