@@ -3,17 +3,40 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Runtime;
 using Android.Widget;
+using Android.Support.Design.Widget;
+using Android.Views;
 
 namespace TPTtimetable
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener
     {
+        TextView textMessage;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
+
+            textMessage = FindViewById<TextView>(Resource.Id.message);
+            BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
+            navigation.SetOnNavigationItemSelectedListener(this);
+        }
+        public bool OnNavigationItemSelected(IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.navigation_home:
+                    textMessage.SetText(Resource.String.title_home);
+                    return true;
+                case Resource.Id.navigation_dashboard:
+                    textMessage.SetText(Resource.String.title_dashboard);
+                    return true;
+                case Resource.Id.navigation_notifications:
+                    textMessage.SetText(Resource.String.title_notifications);
+                    return true;
+            }
+            return false;
         }
     }
 }
