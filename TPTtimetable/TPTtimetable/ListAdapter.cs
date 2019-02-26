@@ -47,6 +47,10 @@ namespace TPTtimetable
             view.FindViewById<TextView>(Resource.Id.textView1).Text = items[position].lessonname;
             view.FindViewById<TextView>(Resource.Id.textView2).Text = items[position].classname;
             view.FindViewById<TextView>(Resource.Id.textView3).Text = items[position].teachername;
+            view.FindViewById<TextView>(Resource.Id.textView4).Text = items[position].start.ToString("HH:mm");
+            view.FindViewById<TextView>(Resource.Id.textView5).Text = items[position].end.ToString("HH:mm");
+
+
             return view;
 
         }
