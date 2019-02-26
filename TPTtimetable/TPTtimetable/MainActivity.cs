@@ -16,10 +16,15 @@ namespace TPTtimetable
         {
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.activity_main);
+            SetContentView(Resource.Layout.experimentalListView);
+
+
+            var list = FindViewById<ListView>(Resource.Id.listView1);
 
             GetTimetable getTimeTable = new GetTimetable();
             TimeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226");
+
+            list.Adapter = new ListAdapter(this, TimeTable);
         }
     }
 }
