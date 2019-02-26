@@ -26,14 +26,20 @@ namespace TPTtimetable
         {
             switch (item.ItemId)
             {
-                case Resource.Id.navigation_home:
-                    textMessage.SetText(Resource.String.title_home);
+                case Resource.Id.navigation_monday:
+                    textMessage.SetText(Resource.String.title_monday);
                     return true;
-                case Resource.Id.navigation_dashboard:
-                    textMessage.SetText(Resource.String.title_dashboard);
+                case Resource.Id.navigation_tuesday:
+                    textMessage.SetText(Resource.String.title_tuesday);
                     return true;
-                case Resource.Id.navigation_notifications:
-                    textMessage.SetText(Resource.String.title_notifications);
+                case Resource.Id.navigation_wednesday:
+                    textMessage.SetText(Resource.String.title_wednesday);
+                    return true;
+                case Resource.Id.navigation_thursday:
+                    textMessage.SetText(Resource.String.title_thursday);
+                    return true;
+                case Resource.Id.navigation_friday:
+                    textMessage.SetText(Resource.String.title_friday);
                     return true;
             }
             return false;

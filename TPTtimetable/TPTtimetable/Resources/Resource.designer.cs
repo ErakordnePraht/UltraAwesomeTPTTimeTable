@@ -2624,17 +2624,23 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08008d
 			public const int navigation = 2131230861;
 			
-			// aapt resource value: 0x7f0800b1
-			public const int navigation_dashboard = 2131230897;
+			// aapt resource value: 0x7f0800b4
+			public const int navigation_friday = 2131230900;
 			
 			// aapt resource value: 0x7f080095
 			public const int navigation_header_container = 2131230869;
 			
 			// aapt resource value: 0x7f0800b0
-			public const int navigation_home = 2131230896;
+			public const int navigation_monday = 2131230896;
+			
+			// aapt resource value: 0x7f0800b3
+			public const int navigation_thursday = 2131230899;
+			
+			// aapt resource value: 0x7f0800b1
+			public const int navigation_tuesday = 2131230897;
 			
 			// aapt resource value: 0x7f0800b2
-			public const int navigation_notifications = 2131230898;
+			public const int navigation_wednesday = 2131230898;
 			
 			// aapt resource value: 0x7f08003b
 			public const int never = 2131230779;
@@ -3289,14 +3295,20 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f090026
 			public const int status_bar_notification_info_overflow = 2131296294;
 			
-			// aapt resource value: 0x7f090029
-			public const int title_dashboard = 2131296297;
+			// aapt resource value: 0x7f09002c
+			public const int title_friday = 2131296300;
 			
 			// aapt resource value: 0x7f090028
-			public const int title_home = 2131296296;
+			public const int title_monday = 2131296296;
+			
+			// aapt resource value: 0x7f09002b
+			public const int title_thursday = 2131296299;
+			
+			// aapt resource value: 0x7f090029
+			public const int title_tuesday = 2131296297;
 			
 			// aapt resource value: 0x7f09002a
-			public const int title_notifications = 2131296298;
+			public const int title_wednesday = 2131296298;
 			
 			static String()
 			{

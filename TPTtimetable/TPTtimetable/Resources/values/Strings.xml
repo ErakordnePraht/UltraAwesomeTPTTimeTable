@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">TPT Tunniplaan</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_monday">Esmaspäev</string>
+    <string name="title_tuesday">Teisipäev</string>
+    <string name="title_wednesday">Kolmapäev</string>
+    <string name="title_thursday">Neljapäev</string>
+    <string name="title_friday">Reede</string>
 </resources>
