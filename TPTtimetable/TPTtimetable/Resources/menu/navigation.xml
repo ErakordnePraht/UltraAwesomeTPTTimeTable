@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item
+      android:id="@+id/navigation_monday"
+      android:icon="@drawable/monday"
+      android:title="@string/title_monday" />
+
+  <item
+      android:id="@+id/navigation_tuesday"
+      android:icon="@drawable/tuesday"
+      android:title="@string/title_tuesday" />
+
+  <item
+      android:id="@+id/navigation_wednesday"
+      android:icon="@drawable/wednesday"
+      android:title="@string/title_wednesday" />
+  
+  <item
+      android:id="@+id/navigation_thursday"
+      android:icon="@drawable/thursday"
+      android:title="@string/title_thursday" />
+
+  <item
+      android:id="@+id/navigation_friday"
+      android:icon="@drawable/friday"
+      android:title="@string/title_friday" />
+
+</menu>
