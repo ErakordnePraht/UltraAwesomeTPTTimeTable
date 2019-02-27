@@ -13,6 +13,7 @@ namespace TPTtimetable
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener
     {
+        ListView list;
         public static SchoolWeek FullTimeTable { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -21,7 +22,7 @@ namespace TPTtimetable
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.activity_main);
 
-            var list = FindViewById<ListView>(Resource.Id.listView1);
+            list = FindViewById<ListView>(Resource.Id.listView1);
 
             GetTimetable getTimeTable = new GetTimetable();
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226");
@@ -71,19 +72,19 @@ namespace TPTtimetable
             switch (item.ItemId)
             {
                 case Resource.Id.navigation_monday:
-                    //ActionBar.Title = "Esmaspäev";
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
                     return true;
                 case Resource.Id.navigation_tuesday:
-                    //ActionBar.Title = "Teisipäev";
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Tuesday);
                     return true;
                 case Resource.Id.navigation_wednesday:
-                    //ActionBar.Title = "Kolmapäev";
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Wednesday);
                     return true;
                 case Resource.Id.navigation_thursday:
-                    //ActionBar.Title = "Neljapäev";
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Thursday);
                     return true;
                 case Resource.Id.navigation_friday:
-                    //ActionBar.Title = "Reede";
+                    list.Adapter = new ListAdapter(this, FullTimeTable.Friday);
                     return true;
             }
             return false;
