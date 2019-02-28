@@ -2627,14 +2627,14 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int masked = 2131230903;
+			// aapt resource value: 0x7f0800b6
+			public const int masked = 2131230902;
 			
 			// aapt resource value: 0x7f0800a7
 			public const int media_actions = 2131230887;
 			
-			// aapt resource value: 0x7f0800b5
-			public const int message = 2131230901;
+			// aapt resource value: 0x7f0800b4
+			public const int message = 2131230900;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -2648,23 +2648,23 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08008d
 			public const int navigation = 2131230861;
 			
-			// aapt resource value: 0x7f0800bc
-			public const int navigation_friday = 2131230908;
+			// aapt resource value: 0x7f0800bb
+			public const int navigation_friday = 2131230907;
 			
 			// aapt resource value: 0x7f080095
 			public const int navigation_header_container = 2131230869;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int navigation_monday = 2131230904;
-			
-			// aapt resource value: 0x7f0800bb
-			public const int navigation_thursday = 2131230907;
-			
-			// aapt resource value: 0x7f0800b9
-			public const int navigation_tuesday = 2131230905;
+			// aapt resource value: 0x7f0800b7
+			public const int navigation_monday = 2131230903;
 			
 			// aapt resource value: 0x7f0800ba
-			public const int navigation_wednesday = 2131230906;
+			public const int navigation_thursday = 2131230906;
+			
+			// aapt resource value: 0x7f0800b8
+			public const int navigation_tuesday = 2131230904;
+			
+			// aapt resource value: 0x7f0800b9
+			public const int navigation_wednesday = 2131230905;
 			
 			// aapt resource value: 0x7f08003b
 			public const int never = 2131230779;
@@ -2879,9 +2879,6 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08006f
 			public const int title_template = 2131230831;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int toolbar = 2131230900;
-			
 			// aapt resource value: 0x7f08003e
 			public const int top = 2131230782;
 			
@@ -2918,8 +2915,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800b6
-			public const int visible = 2131230902;
+			// aapt resource value: 0x7f0800b5
+			public const int visible = 2131230901;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;
@@ -3170,10 +3167,7 @@ namespace TPTtimetable
 			public const int support_simple_spinner_dropdown_item = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int toolbar = 2130968638;
-			
-			// aapt resource value: 0x7f04003f
-			public const int tooltip = 2130968639;
+			public const int tooltip = 2130968638;
 			
 			static Layout()
 			{
