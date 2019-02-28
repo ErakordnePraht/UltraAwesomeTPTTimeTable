@@ -11,7 +11,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		android:layout_marginBottom="60dp"
-		android:id="@+id/listView1" />
+		android:id="@+id/listView1"/>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
@@ -21,4 +21,11 @@
 		app:itemIconTint="@android:color/white"
 		app:itemTextColor="@android:color/white"
         app:menu="@menu/navigation"/>
+	<android.support.v7.widget.Toolbar
+		android:id="@+id/toolbar"
+		android:layout_width="match_parent"
+	    android:layout_height="?android:attr/actionBarSize"
+	    android:background="?android:attr/colorPrimary"
+	    app:popupTheme="@style/AppTheme.PopupOverlay"/>
+	    
 </RelativeLayout>
