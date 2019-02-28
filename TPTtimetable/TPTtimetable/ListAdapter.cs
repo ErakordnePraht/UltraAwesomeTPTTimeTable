@@ -42,14 +42,20 @@ namespace TPTtimetable
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             View view = convertView;
-            if (view == null)
-                view = context.LayoutInflater.Inflate(Resource.Layout.experimental, null);
+            //Commented this out so that it doesn't re-use cells that are not in the view of the screen.
+            //if (view == null)
+            view = context.LayoutInflater.Inflate(Resource.Layout.experimental, null);
             view.FindViewById<TextView>(Resource.Id.textView1).Text = items[position].lessonname;
             view.FindViewById<TextView>(Resource.Id.textView2).Text = items[position].classname;
             view.FindViewById<TextView>(Resource.Id.textView3).Text = items[position].teachername;
             view.FindViewById<TextView>(Resource.Id.textView4).Text = items[position].start.ToString("HH:mm");
             view.FindViewById<TextView>(Resource.Id.textView5).Text = items[position].end.ToString("HH:mm");
-
+            
+            var timeOfDay = DateTime.Now;
+            if (timeOfDay > items[position].start && timeOfDay < items[position].end)
+            {
+                view.SetBackgroundColor(Android.Graphics.Color.ParseColor("#424242"));
+            }
 
             return view;
 

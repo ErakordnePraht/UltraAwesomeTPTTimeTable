@@ -65,7 +65,6 @@ namespace TPTtimetable
                     mondayTab.PerformClick();
                     break;
             }
-
         }
         public bool OnNavigationItemSelected(IMenuItem item)
         {
