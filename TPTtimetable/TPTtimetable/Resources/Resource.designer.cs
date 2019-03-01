@@ -3167,14 +3167,10 @@ namespace TPTtimetable
 			public const int support_simple_spinner_dropdown_item = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int support_simple_spinner_dropdown_item = 2130968637;
+			public const int toolbar = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int toolbar = 2130968638;
-			
-			// aapt resource value: 0x7f04003f
-			public const int tooltip = 2130968639;
-			public const int tooltip = 2130968637;
+			public const int tooltip = 2130968638;
 			
 			static Layout()
 			{
