@@ -13,6 +13,7 @@ namespace TPTtimetable
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener
     {
+        Android.Support.V7.Widget.Toolbar toolbar;
         ListView list;
         public static SchoolWeek FullTimeTable { get; set; }
 
@@ -27,6 +28,9 @@ namespace TPTtimetable
             GetTimetable getTimeTable = new GetTimetable();
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226");
             FullTimeTable = getTimeTable.SortByDay(timeTable);
+
+            toolbar = (Android.Support.V7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
+            toolbar.Title = DateTime.Now.ToString();
 
             BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
             navigation.SetOnNavigationItemSelectedListener(this);

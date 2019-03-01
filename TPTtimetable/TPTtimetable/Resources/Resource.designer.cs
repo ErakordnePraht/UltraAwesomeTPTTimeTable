@@ -2621,8 +2621,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08001d
 			public const int listMode = 2131230749;
 			
-			// aapt resource value: 0x7f08008c
-			public const int listView1 = 2131230860;
+			// aapt resource value: 0x7f08008d
+			public const int listView1 = 2131230861;
 			
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
@@ -2645,8 +2645,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
 			
-			// aapt resource value: 0x7f08008d
-			public const int navigation = 2131230861;
+			// aapt resource value: 0x7f08008e
+			public const int navigation = 2131230862;
 			
 			// aapt resource value: 0x7f0800bc
 			public const int navigation_friday = 2131230908;
@@ -2879,8 +2879,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08006f
 			public const int title_template = 2131230831;
 			
-			// aapt resource value: 0x7f08008e
-			public const int toolbar = 2131230862;
+			// aapt resource value: 0x7f08008c
+			public const int toolbar = 2131230860;
 			
 			// aapt resource value: 0x7f08003e
 			public const int top = 2131230782;
@@ -3386,14 +3386,11 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f0a0180
 			public const int AppTheme = 2131362176;
 			
-			// aapt resource value: 0x7f0a0182
-			public const int AppTheme_AppBarOverlay = 2131362178;
-			
 			// aapt resource value: 0x7f0a0181
-			public const int AppTheme_NoActionBar = 2131362177;
+			public const int AppTheme_AppBarOverlay = 2131362177;
 			
-			// aapt resource value: 0x7f0a0183
-			public const int AppTheme_PopupOverlay = 2131362179;
+			// aapt resource value: 0x7f0a0182
+			public const int AppTheme_PopupOverlay = 2131362178;
 			
 			// aapt resource value: 0x7f0a009a
 			public const int Base_AlertDialog_AppCompat = 2131361946;
