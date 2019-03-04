@@ -31,6 +31,8 @@ namespace TPTtimetable
 
             toolbar = (Android.Support.V7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
             toolbar.Title = DateTime.Now.ToString();
+             
+            
 
             BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
             navigation.SetOnNavigationItemSelectedListener(this);
