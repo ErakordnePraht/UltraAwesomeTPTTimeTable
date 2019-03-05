@@ -19,6 +19,10 @@ namespace TPTtimetable
         public static DateTime ChosenMonday { get; set; }
         public static DateTime ChosenSunday { get; set; }
 
+        GestureDetector _gestureDetector;
+        GestureListener _gestureListener;
+        int crntSelection;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -37,48 +41,18 @@ namespace TPTtimetable
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
             toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
 
-            BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
-            navigation.SetOnNavigationItemSelectedListener(this);
-            View mondayTab = this.FindViewById(Resource.Id.navigation_monday);
-            View tuesdayTab = this.FindViewById(Resource.Id.navigation_tuesday);
-            View wednesdayTab = this.FindViewById(Resource.Id.navigation_wednesday);
-            View thursdayTab = this.FindViewById(Resource.Id.navigation_thursday);
-            View fridayTab = this.FindViewById(Resource.Id.navigation_friday);
+            ClickCurrentDay();
+
             var nextWeekBtn = FindViewById<ImageButton>(Resource.Id.nextWeekBtn);
             var prevWeekBtn = FindViewById<ImageButton>(Resource.Id.prevWeekBtn);
 
-            DayOfWeek currentDay = DateTime.Now.DayOfWeek;
-
-            switch (currentDay)
-            {
-                case DayOfWeek.Monday:
-                    list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
-                    mondayTab.PerformClick();
-                    break;
-                case DayOfWeek.Tuesday:
-                    list.Adapter = new ListAdapter(this, FullTimeTable.Tuesday);
-                    tuesdayTab.PerformClick();
-                    break;
-                case DayOfWeek.Wednesday:
-                    list.Adapter = new ListAdapter(this, FullTimeTable.Wednesday);
-                    wednesdayTab.PerformClick();
-                    break;
-                case DayOfWeek.Thursday:
-                    list.Adapter = new ListAdapter(this, FullTimeTable.Thursday);
-                    thursdayTab.PerformClick();
-                    break;
-                case DayOfWeek.Friday:
-                    list.Adapter = new ListAdapter(this, FullTimeTable.Friday);
-                    fridayTab.PerformClick();
-                    break;
-                default:
-                    list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
-                    mondayTab.PerformClick();
-                    break;
-            }
-
             nextWeekBtn.Click += NextWeekBtn_Click;
             prevWeekBtn.Click += PrevWeekBtn_Click;
+
+            _gestureListener = new GestureListener();
+            _gestureListener.LeftEvent += GestureLeft;
+            _gestureListener.RightEvent += GestureRight;
+            _gestureDetector = new GestureDetector(this, _gestureListener);
         }
 
         private void PrevWeekBtn_Click(object sender, EventArgs e)
@@ -91,7 +65,7 @@ namespace TPTtimetable
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226&nadal=" + ChosenMonday.ToString("dd.MM.yyyy"));
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
-            list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+            ClickCurrentDay(crntSelection);
             toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
         }
 
@@ -105,7 +79,7 @@ namespace TPTtimetable
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226&nadal=" + ChosenMonday.ToString("dd.MM.yyyy"));
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
-            list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+            ClickCurrentDay(crntSelection);
             toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
         }
 
@@ -130,6 +104,113 @@ namespace TPTtimetable
                     return true;
             }
             return false;
+        }
+        public void ClickCurrentDay(int selection = 0)
+        {
+            BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
+            navigation.SetOnNavigationItemSelectedListener(this);
+            View mondayTab = this.FindViewById(Resource.Id.navigation_monday);
+            View tuesdayTab = this.FindViewById(Resource.Id.navigation_tuesday);
+            View wednesdayTab = this.FindViewById(Resource.Id.navigation_wednesday);
+            View thursdayTab = this.FindViewById(Resource.Id.navigation_thursday);
+            View fridayTab = this.FindViewById(Resource.Id.navigation_friday);
+
+            if (selection == 0)
+            {
+                DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+
+                switch (currentDay)
+                {
+                    case DayOfWeek.Monday:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+                        mondayTab.PerformClick();
+                        crntSelection = 1;
+                        break;
+                    case DayOfWeek.Tuesday:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Tuesday);
+                        tuesdayTab.PerformClick();
+                        crntSelection = 2;
+                        break;
+                    case DayOfWeek.Wednesday:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Wednesday);
+                        wednesdayTab.PerformClick();
+                        crntSelection = 3;
+                        break;
+                    case DayOfWeek.Thursday:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Thursday);
+                        thursdayTab.PerformClick();
+                        crntSelection = 4;
+                        break;
+                    case DayOfWeek.Friday:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Friday);
+                        fridayTab.PerformClick();
+                        crntSelection = 5;
+                        break;
+                    default:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+                        mondayTab.PerformClick();
+                        crntSelection = 1;
+                        break;
+                }
+            }
+            else
+            {
+                switch (selection)
+                {
+                    case 1:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+                        mondayTab.PerformClick();
+                        crntSelection = 1;
+                        break;
+                    case 2:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Tuesday);
+                        tuesdayTab.PerformClick();
+                        crntSelection = 2;
+                        break;
+                    case 3:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Wednesday);
+                        wednesdayTab.PerformClick();
+                        crntSelection = 3;
+                        break;
+                    case 4:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Thursday);
+                        thursdayTab.PerformClick();
+                        crntSelection = 4;
+                        break;
+                    case 5:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Friday);
+                        fridayTab.PerformClick();
+                        crntSelection = 5;
+                        break;
+                    default:
+                        list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+                        mondayTab.PerformClick();
+                        crntSelection = 1;
+                        break;
+                }
+            }
+        }
+
+        void GestureLeft()
+        {
+            BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
+            ClickCurrentDay(crntSelection + 1);
+        }
+
+        void GestureRight()
+        {
+            BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
+            if (crntSelection == 1)
+            {
+                crntSelection = 6;
+            }
+            ClickCurrentDay(crntSelection - 1);
+        }
+
+        public override bool DispatchTouchEvent(MotionEvent ev)
+        {
+            _gestureDetector.OnTouchEvent(ev);
+            return base.DispatchTouchEvent(ev);
         }
     }
 }
