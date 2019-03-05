@@ -16,6 +16,8 @@ namespace TPTtimetable
         Android.Support.V7.Widget.Toolbar toolbar;
         ListView list;
         public static SchoolWeek FullTimeTable { get; set; }
+        public static DateTime ChosenMonday { get; set; }
+        public static DateTime ChosenSunday { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -30,9 +32,10 @@ namespace TPTtimetable
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
             toolbar = (Android.Support.V7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
-            toolbar.Title = DateTime.Now.ToString();
-             
-            
+            GetWeekDates getWeekDates = new GetWeekDates();
+            ChosenMonday = getWeekDates.GetMonday(DateTime.Now);
+            ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
+            toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
 
             BottomNavigationView navigation = FindViewById<BottomNavigationView>(Resource.Id.navigation);
             navigation.SetOnNavigationItemSelectedListener(this);
@@ -41,6 +44,8 @@ namespace TPTtimetable
             View wednesdayTab = this.FindViewById(Resource.Id.navigation_wednesday);
             View thursdayTab = this.FindViewById(Resource.Id.navigation_thursday);
             View fridayTab = this.FindViewById(Resource.Id.navigation_friday);
+            var nextWeekBtn = FindViewById<ImageButton>(Resource.Id.nextWeekBtn);
+            var prevWeekBtn = FindViewById<ImageButton>(Resource.Id.prevWeekBtn);
 
             DayOfWeek currentDay = DateTime.Now.DayOfWeek;
 
@@ -71,7 +76,39 @@ namespace TPTtimetable
                     mondayTab.PerformClick();
                     break;
             }
+
+            nextWeekBtn.Click += NextWeekBtn_Click;
+            prevWeekBtn.Click += PrevWeekBtn_Click;
         }
+
+        private void PrevWeekBtn_Click(object sender, EventArgs e)
+        {
+            GetWeekDates getWeekDates = new GetWeekDates();
+            GetTimetable getTimeTable = new GetTimetable();
+
+            ChosenMonday = getWeekDates.GetPreviousWeek(ChosenMonday);
+            ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
+            var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226&nadal=" + ChosenMonday.ToString("dd.MM.yyyy"));
+            FullTimeTable = getTimeTable.SortByDay(timeTable);
+
+            list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+            toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
+        }
+
+        private void NextWeekBtn_Click(object sender, EventArgs e)
+        {
+            GetWeekDates getWeekDates = new GetWeekDates();
+            GetTimetable getTimeTable = new GetTimetable();
+
+            ChosenMonday = getWeekDates.GetNextWeek(ChosenMonday);
+            ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
+            var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226&nadal=" + ChosenMonday.ToString("dd.MM.yyyy"));
+            FullTimeTable = getTimeTable.SortByDay(timeTable);
+
+            list.Adapter = new ListAdapter(this, FullTimeTable.Monday);
+            toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
+        }
+
         public bool OnNavigationItemSelected(IMenuItem item)
         {
             switch (item.ItemId)

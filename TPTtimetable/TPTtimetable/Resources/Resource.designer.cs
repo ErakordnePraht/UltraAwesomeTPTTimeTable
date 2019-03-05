@@ -2600,12 +2600,6 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08005f
 			public const int image = 2131230815;
 			
-			// aapt resource value: 0x7f08008d
-			public const int imageButton1 = 2131230861;
-			
-			// aapt resource value: 0x7f08008e
-			public const int imageButton2 = 2131230862;
-			
 			// aapt resource value: 0x7f0800b1
 			public const int info = 2131230897;
 			
@@ -2681,6 +2675,9 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08003b
 			public const int never = 2131230779;
 			
+			// aapt resource value: 0x7f08008d
+			public const int nextWeekBtn = 2131230861;
+			
 			// aapt resource value: 0x7f080022
 			public const int none = 2131230754;
 			
@@ -2707,6 +2704,9 @@ namespace TPTtimetable
 			
 			// aapt resource value: 0x7f08004d
 			public const int pin = 2131230797;
+			
+			// aapt resource value: 0x7f08008e
+			public const int prevWeekBtn = 2131230862;
 			
 			// aapt resource value: 0x7f080006
 			public const int progress_circular = 2131230726;
