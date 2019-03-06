@@ -191,7 +191,7 @@ namespace TPTtimetable
                     ClassNum = "226";
                     break;
             }
-
+            Preferences.Set("class_num", ClassNum);
             GetTimetable getTimeTable = new GetTimetable();
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
             FullTimeTable = getTimeTable.SortByDay(timeTable);
