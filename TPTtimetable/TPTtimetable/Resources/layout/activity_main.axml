@@ -15,8 +15,8 @@
 		android:minHeight="25px">
 		<ImageButton
 			android:src="@drawable/next"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="100px"
+			android:layout_height="100px"
 			android:layout_marginRight="10dp"
 			android:layout_marginLeft="20dp"
 			android:layout_gravity="right"
@@ -24,8 +24,8 @@
 			android:id="@+id/nextWeekBtn" />
 		<ImageButton
 			android:src="@drawable/back"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
+			android:layout_width="100px"
+			android:layout_height="100px"
 			android:layout_marginLeft="20dp"
 			android:layout_gravity="right"
 			android:background="?android:attr/colorPrimary"
@@ -39,12 +39,6 @@
 		android:layout_marginTop="?android:attr/actionBarSize"
 		android:layout_marginBottom="60dp"
 		android:id="@+id/listView1"/>
-	<ProgressBar
-		android:layout_width="match_parent"
-		android:layout_height="300px"
-		android:gravity="center"
-		android:layout_below="@id/toolbar"
-		android:id="@+id/progressBar1" />
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
@@ -54,4 +48,5 @@
 		app:itemIconTint="@android:color/white"
 		app:itemTextColor="@android:color/white"
         app:menu="@menu/navigation"/>
+	    
 </RelativeLayout>
