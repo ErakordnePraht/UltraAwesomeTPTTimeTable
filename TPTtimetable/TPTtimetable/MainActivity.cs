@@ -27,7 +27,7 @@ namespace TPTtimetable
         {
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.activity_main);
+            SetContentView(Resource.Layout.side_panel);
 
             list = FindViewById<ListView>(Resource.Id.listView1);
 
