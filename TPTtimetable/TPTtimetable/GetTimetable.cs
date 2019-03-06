@@ -26,7 +26,6 @@ namespace TPTtimetable
             timetablejson = timetablejson.Substring(0, timetablejson.IndexOf(']') + 1);
             var timetableobject = JsonConvert.DeserializeObject<IList<JsonTund>>(timetablejson);
             List<Tund> timetable = new List<Tund>();
-
             foreach (var item in timetableobject)
             {
                 string lessonname = item.title.Substring(item.title.IndexOf('>') + 1);

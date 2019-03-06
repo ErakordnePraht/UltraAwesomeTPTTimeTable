@@ -3,6 +3,7 @@ using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
 using Android.Runtime;
+using Xamarin.Essentials;
 using Android.Widget;
 using Android.Views;
 using System.Collections.Generic;
@@ -27,12 +28,16 @@ namespace TPTtimetable
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            ClassNum = Preferences.Get("class_num", "226");
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.side_panel);
 
             list = FindViewById<ListView>(Resource.Id.listView1);
 
+            GetTimetable getTimeTable = new GetTimetable();
+            var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+            FullTimeTable = getTimeTable.SortByDay(timeTable);
 
             toolbar = (Android.Support.V7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
             GetWeekDates getWeekDates = new GetWeekDates();
@@ -40,7 +45,7 @@ namespace TPTtimetable
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
             toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
 
-            //ClickCurrentDay();
+            ClickCurrentDay();
 
             var nextWeekBtn = FindViewById<ImageButton>(Resource.Id.nextWeekBtn);
             var prevWeekBtn = FindViewById<ImageButton>(Resource.Id.prevWeekBtn);
@@ -60,7 +65,6 @@ namespace TPTtimetable
         {
             var drawerlayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             e.MenuItem.SetChecked(true);
-            GetTimetable getTimeTable = new GetTimetable();
             switch (e.MenuItem.ItemId)
             {
                 case Resource.Id.AA17:
@@ -178,10 +182,13 @@ namespace TPTtimetable
                     ClassNum = Resources.GetString(Resource.String.TT18T);
                     break;
                 default:
+                    ClassNum = "226";
                     break;
             }
+            GetTimetable getTimeTable = new GetTimetable();
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
             FullTimeTable = getTimeTable.SortByDay(timeTable);
+            Preferences.Set("class_num", ClassNum);
 
             drawerlayout.CloseDrawers();
         }
