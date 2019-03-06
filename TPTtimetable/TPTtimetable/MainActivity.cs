@@ -15,6 +15,7 @@ namespace TPTtimetable
     {
         Android.Support.V7.Widget.Toolbar toolbar;
         ListView list;
+        ProgressBar loadingCircle;
         public static SchoolWeek FullTimeTable { get; set; }
         public static DateTime ChosenMonday { get; set; }
         public static DateTime ChosenSunday { get; set; }
@@ -30,6 +31,8 @@ namespace TPTtimetable
             SetContentView(Resource.Layout.activity_main);
 
             list = FindViewById<ListView>(Resource.Id.listView1);
+            loadingCircle = FindViewById<ProgressBar>(Resource.Id.progressBar1);
+            loadingCircle.Visibility = ViewStates.Invisible;
 
             GetTimetable getTimeTable = new GetTimetable();
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=226");
@@ -57,6 +60,7 @@ namespace TPTtimetable
 
         private void PrevWeekBtn_Click(object sender, EventArgs e)
         {
+            loadingCircle.Visibility = ViewStates.Visible;
             GetWeekDates getWeekDates = new GetWeekDates();
             GetTimetable getTimeTable = new GetTimetable();
 
@@ -67,10 +71,12 @@ namespace TPTtimetable
 
             ClickCurrentDay(crntSelection);
             toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
+            loadingCircle.Visibility = ViewStates.Invisible;
         }
 
         private void NextWeekBtn_Click(object sender, EventArgs e)
         {
+            loadingCircle.Visibility = ViewStates.Visible;
             GetWeekDates getWeekDates = new GetWeekDates();
             GetTimetable getTimeTable = new GetTimetable();
 
@@ -81,6 +87,7 @@ namespace TPTtimetable
 
             ClickCurrentDay(crntSelection);
             toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
+            loadingCircle.Visibility = ViewStates.Invisible;
         }
 
         public bool OnNavigationItemSelected(IMenuItem item)
