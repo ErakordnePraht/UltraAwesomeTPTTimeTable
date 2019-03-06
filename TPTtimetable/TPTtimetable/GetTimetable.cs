@@ -29,11 +29,23 @@ namespace TPTtimetable
             foreach (var item in timetableobject)
             {
                 string lessonname = item.title.Substring(item.title.IndexOf('>') + 1);
-                string teachername = lessonname.Substring(lessonname.IndexOf(';') + 2);
-                string classname = teachername.Substring(teachername.IndexOf(';') + 2);
-                classname = classname.Substring(classname.IndexOf("-") + 2, 4);
-                lessonname = lessonname.Substring(0, lessonname.IndexOf('<') - 1);
-                teachername = teachername.Substring(0, teachername.LastIndexOf(';'));
+                string teachername = "Default";
+                string classname = "Default";
+                if (lessonname.Split(';').Count() >= 3)
+                {
+                    teachername = lessonname.Substring(lessonname.IndexOf(';') + 2);
+                    classname = teachername.Substring(teachername.IndexOf(';') + 2);
+                    classname = classname.Substring(classname.IndexOf("-") + 2, 4);
+                    lessonname = lessonname.Substring(0, lessonname.IndexOf('<') - 1);
+                    teachername = teachername.Substring(0, teachername.LastIndexOf(';'));
+                }
+                else
+                {
+                    classname = lessonname.Substring(lessonname.IndexOf(';') + 2);
+                    classname = classname.Substring(classname.IndexOf("-") + 2, 4);
+                    lessonname = lessonname.Substring(0, lessonname.IndexOf('<') - 1);
+
+                }
                 //Some lessons have an extra HTML element: "valikaine", this code removes it from the teachername variable.
                 //This also fixes classname.
                 if (teachername.Contains("valikaine"))
@@ -52,7 +64,7 @@ namespace TPTtimetable
                 };
                 timetable.Add(tund);
             }
-            
+
             return timetable;
         }
 
