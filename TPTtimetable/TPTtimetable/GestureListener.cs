@@ -35,7 +35,7 @@ namespace TPTtimetable
                 else if (e2.GetX() - e1.GetX() > SWIPE_MIN_DISTANCE && Math.Abs(velocityX) > SWIPE_THRESHOLD_VELOCITY && RightEvent != null)
                     RightEvent();// Toast.MakeText(view.Context, "Right Swipe", ToastLength.Short).Show();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // nothing
             }
