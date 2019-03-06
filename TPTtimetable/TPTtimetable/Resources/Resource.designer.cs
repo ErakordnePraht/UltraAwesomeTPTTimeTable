@@ -2807,23 +2807,23 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080090
 			public const int navigation = 2131230864;
 			
-			// aapt resource value: 0x7f0800e8
-			public const int navigation_friday = 2131230952;
+			// aapt resource value: 0x7f0800e9
+			public const int navigation_friday = 2131230953;
 			
 			// aapt resource value: 0x7f080098
 			public const int navigation_header_container = 2131230872;
 			
-			// aapt resource value: 0x7f0800e4
-			public const int navigation_monday = 2131230948;
-			
-			// aapt resource value: 0x7f0800e7
-			public const int navigation_thursday = 2131230951;
-			
 			// aapt resource value: 0x7f0800e5
-			public const int navigation_tuesday = 2131230949;
+			public const int navigation_monday = 2131230949;
+			
+			// aapt resource value: 0x7f0800e8
+			public const int navigation_thursday = 2131230952;
 			
 			// aapt resource value: 0x7f0800e6
-			public const int navigation_wednesday = 2131230950;
+			public const int navigation_tuesday = 2131230950;
+			
+			// aapt resource value: 0x7f0800e7
+			public const int navigation_wednesday = 2131230951;
 			
 			// aapt resource value: 0x7f08003b
 			public const int never = 2131230779;
@@ -2845,6 +2845,9 @@ namespace TPTtimetable
 			
 			// aapt resource value: 0x7f0800ae
 			public const int notification_main_column_container = 2131230894;
+			
+			// aapt resource value: 0x7f0800e4
+			public const int open_github = 2131230948;
 			
 			// aapt resource value: 0x7f08004c
 			public const int parallax = 2131230796;

@@ -9,6 +9,7 @@ using Android.Views;
 using System.Collections.Generic;
 using System;
 using Android.Support.V4.Widget;
+using Android.Content;
 
 namespace TPTtimetable
 {
@@ -67,6 +68,11 @@ namespace TPTtimetable
             e.MenuItem.SetChecked(true);
             switch (e.MenuItem.ItemId)
             {
+                case Resource.Id.open_github:
+                    var uri = Android.Net.Uri.Parse("https://github.com/truberton/UltraAwesomeTPTTimeTable");
+                    var intent = new Intent(Intent.ActionView, uri);
+                    StartActivity(intent);
+                    return;
                 case Resource.Id.AA17:
                     ClassNum = Resources.GetString(Resource.String.AA17);
                     break;

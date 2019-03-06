@@ -120,4 +120,12 @@
        android:title="TT-18T" />
   </group>
 
+  <item android:title="Our Project Repo">
+    <menu>
+      <item
+          android:id="@+id/open_github"
+          android:title="Github" />
+    </menu>
+  </item>
+
 </menu>
