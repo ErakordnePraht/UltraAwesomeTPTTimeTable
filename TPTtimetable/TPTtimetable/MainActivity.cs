@@ -11,6 +11,11 @@ using System;
 using Android.Support.V4.Widget;
 using Android.Content;
 
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Distribute;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+
 namespace TPTtimetable
 {
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
@@ -29,6 +34,9 @@ namespace TPTtimetable
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            AppCenter.Start("d256fb85-c190-4b81-a6cf-05ac0738a42e",
+                   typeof(Analytics), typeof(Crashes), typeof(Distribute));
+
             ClassNum = Preferences.Get("class_num", "226");
             base.OnCreate(savedInstanceState);
             // Set our view from the "main" layout resource
