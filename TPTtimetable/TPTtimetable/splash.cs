@@ -19,20 +19,10 @@ namespace TPTtimetable
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your application here
         }
         protected override void OnResume()
         {
             base.OnResume();
-            StartActivity(new Intent(Application.Context, typeof(MainActivity)));
-            //Task startupWork = new Task(() => { SimulateStartup(); });
-            //startupWork.Start();
-        }
-
-        async void SimulateStartup()
-        {
-           // await Task.Delay(50); // Simulate a bit of startup work.
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
     }
