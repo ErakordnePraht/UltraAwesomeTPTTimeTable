@@ -1,4 +1,4 @@
-﻿using Android.App;
+using Android.App;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Support.Design.Widget;
@@ -72,6 +72,8 @@ namespace TPTtimetable
 
         private void Drawer_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
+            Analytics.TrackEvent(e.MenuItem.TitleFormatted.ToString());
+
             var drawerlayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             e.MenuItem.SetChecked(true);
             switch (e.MenuItem.ItemId)
