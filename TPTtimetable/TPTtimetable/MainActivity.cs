@@ -21,7 +21,7 @@ namespace TPTtimetable
     [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
     public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener
     {
-        Android.Support.V7.Widget.Toolbar toolbar;
+        TextView week;
         ListView list;
         public static SchoolWeek FullTimeTable { get; set; }
         public static DateTime ChosenMonday { get; set; }
@@ -43,22 +43,25 @@ namespace TPTtimetable
             SetContentView(Resource.Layout.side_panel);
 
             list = FindViewById<ListView>(Resource.Id.listView1);
+            week = FindViewById<TextView>(Resource.Id.textViewWeek);
 
             GetTimetable getTimeTable = new GetTimetable();
             var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
-            toolbar = (Android.Support.V7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
             GetWeekDates getWeekDates = new GetWeekDates();
             ChosenMonday = getWeekDates.GetMonday(DateTime.Now);
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
-            toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
+            week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
 
             ClickCurrentDay();
 
             var nextWeekBtn = FindViewById<ImageButton>(Resource.Id.nextWeekBtn);
             var prevWeekBtn = FindViewById<ImageButton>(Resource.Id.prevWeekBtn);
             var drawer = FindViewById<NavigationView>(Resource.Id.nav_view);
+            var menuButton = FindViewById<ImageButton>(Resource.Id.menuButton);
+
+            menuButton.Click += MenuButton_Click;
 
             drawer.NavigationItemSelected += Drawer_NavigationItemSelected;
             nextWeekBtn.Click += NextWeekBtn_Click;
@@ -68,6 +71,13 @@ namespace TPTtimetable
             _gestureListener.LeftEvent += GestureLeft;
             _gestureListener.RightEvent += GestureRight;
             _gestureDetector = new GestureDetector(this, _gestureListener);
+        }
+
+        private void MenuButton_Click(object sender, EventArgs e)
+        {
+            var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            var drawerView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            drawer.OpenDrawer(drawerView);
         }
 
         private void Drawer_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
@@ -222,7 +232,7 @@ namespace TPTtimetable
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
             ClickCurrentDay(crntSelection);
-            toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
+            week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
         }
 
         private void NextWeekBtn_Click(object sender, EventArgs e)
@@ -236,7 +246,7 @@ namespace TPTtimetable
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
             ClickCurrentDay(crntSelection);
-            toolbar.Title = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
+            week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
         }
 
         public bool OnNavigationItemSelected(IMenuItem item)
