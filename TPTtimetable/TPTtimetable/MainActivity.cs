@@ -18,7 +18,7 @@ using Microsoft.AppCenter.Crashes;
 
 namespace TPTtimetable
 {
-    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
+    [Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = false)]
     public class MainActivity : AppCompatActivity, BottomNavigationView.IOnNavigationItemSelectedListener
     {
         Android.Support.V7.Widget.Toolbar toolbar;

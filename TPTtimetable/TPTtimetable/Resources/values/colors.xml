@@ -5,4 +5,5 @@
     <color name="colorAccent">#212121</color>
     <color name="colorPrimaryNavBar">#FFFFFF</color>
     <color name="colorPrimaryNavNotSelected">#8c8c8c</color>
+    <color name="splash_background">#494747</color>
 </resources>
