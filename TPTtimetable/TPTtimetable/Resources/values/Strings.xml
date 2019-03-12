@@ -1,4 +1,8 @@
 <resources>
-    <string name="app_name">TPTtimetable</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">TPT Tunniplaan</string>
+    <string name="title_monday">Esmaspäev</string>
+    <string name="title_tuesday">Teisipäev</string>
+    <string name="title_wednesday">Kolmapäev</string>
+    <string name="title_thursday">Neljapäev</string>
+    <string name="title_friday">Reede</string>
 </resources>

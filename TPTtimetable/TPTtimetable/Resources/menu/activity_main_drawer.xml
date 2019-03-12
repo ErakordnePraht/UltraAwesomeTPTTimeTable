@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+  <group android:checkableBehavior="single">
+    <item
+       android:id="@+id/AA17"
+       android:title="AA-17" />
+    <item
+       android:id="@+id/AA18"
+       android:title="AA-18" />
+    <item
+       android:id="@+id/AV17"
+       android:title="AV-17" />
+    <item
+       android:id="@+id/AV18"
+       android:title="AV-18" />
+    <item
+       android:id="@+id/EA17"
+       android:title="EA-17" />
+    <item
+       android:id="@+id/EA18"
+       android:title="EA-18" />
+    <item
+       android:id="@+id/EV17"
+       android:title="EV-17" />
+    <item
+       android:id="@+id/EV18"
+       android:title="EV-18" />
+    <item
+       android:id="@+id/FS18"
+       android:title="FS-18" />
+    <item
+       android:id="@+id/IT16E"
+       android:title="IT-16E" />
+    <item
+       android:id="@+id/IT16V"
+       android:title="IT-16V" />
+    <item
+       android:id="@+id/IT17E"
+       android:title="IT-17E" />
+    <item
+       android:id="@+id/IT17V"
+       android:title="IT-17V" />
+    <item
+       android:id="@+id/IT18E"
+       android:title="IT-18E" />
+    <item
+       android:id="@+id/IT18V"
+       android:title="IT-18V" />
+    <item
+       android:id="@+id/KEV17"
+       android:title="KEV-17" />
+    <item
+       android:id="@+id/KIT17V"
+       android:title="KIT-17V" />
+    <item
+       android:id="@+id/KIT18E"
+       android:title="KIT-18E" />
+    <item
+       android:id="@+id/KK218V"
+       android:title="KK2-18V" />
+    <item
+       android:id="@+id/KTA17E"
+       android:title="KTA-17E" />
+    <item
+       android:id="@+id/MM17"
+       android:title="MM-17" />
+    <item
+       android:id="@+id/MM18"
+       android:title="MM-18" />
+    <item
+       android:id="@+id/MS18"
+       android:title="MS-18" />
+    <item
+       android:id="@+id/SA17"
+       android:title="SA-17" />
+    <item
+       android:id="@+id/SA18"
+       android:title="SA-18" />
+    <item
+       android:id="@+id/TA16E"
+       android:title="TA-16E" />
+    <item
+       android:id="@+id/TA16V"
+       android:title="TA-16V" />
+    <item
+       android:id="@+id/TA17E"
+       android:title="TA-17E" />
+    <item
+       android:id="@+id/TA17V"
+       android:title="TA-17V" />
+    <item
+       android:id="@+id/TA18E"
+       android:title="TA-18E" />
+    <item
+       android:id="@+id/TA18V"
+       android:title="TA-18V" />
+    <item
+       android:id="@+id/TJ18A"
+       android:title="TJ-18A" />
+    <item
+       android:id="@+id/TS18E"
+       android:title="TS-18E" />
+    <item
+       android:id="@+id/TS18T"
+       android:title="TS-18T" />
+    <item
+       android:id="@+id/TT17E"
+       android:title="TT-17E" />
+    <item
+       android:id="@+id/TT17T"
+       android:title="TT-17T" />
+    <item
+       android:id="@+id/TT18E"
+       android:title="TT-18E" />
+    <item
+       android:id="@+id/TT18T"
+       android:title="TT-18T" />
+  </group>
+
+  <item android:title="Our Project Repo">
+    <menu>
+      <item
+          android:id="@+id/open_github"
+          android:title="Github" />
+    </menu>
+  </item>
+
+</menu>
