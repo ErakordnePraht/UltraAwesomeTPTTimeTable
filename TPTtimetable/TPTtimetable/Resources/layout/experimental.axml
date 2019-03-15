@@ -45,17 +45,38 @@
 			android:textSize="17dp"
 			android:textStyle="italic"
 			android:id="@+id/textView3" />
-		<TextView
-			android:text="End time"
-			android:textAppearance="?android:attr/textAppearanceLarge"
-			android:layout_width="wrap_content"
+		<LinearLayout
+			android:orientation="horizontal"
+			android:minWidth="25px"
+			android:minHeight="25px"
+			android:layout_width="match_parent"
+			android:layout_marginRight="20dp"
 			android:layout_height="wrap_content"
-			android:id="@+id/textView5"
-			android:layout_marginTop="2.5dp"
-			android:layout_marginLeft="8dp"
-			android:layout_marginBottom="2.5dp"
-			android:textSize="15dp"
-			android:layout_gravity="bottom"
-			android:gravity="bottom" />
+			android:id="@+id/linearLayout1">
+			<TextView
+				android:text="End time"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/textView5"
+				android:layout_marginTop="2.5dp"
+				android:layout_marginLeft="8dp"
+				android:layout_marginBottom="2.5dp"
+				android:textSize="15dp"
+				android:layout_gravity="bottom|left"
+				android:gravity="bottom|left" />
+			<TextView
+				android:text="Time left"
+				android:textAppearance="?android:attr/textAppearanceLarge"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/textView6"
+				android:layout_marginTop="2.5dp"
+				android:layout_marginLeft="8dp"
+				android:layout_marginBottom="2dp"
+				android:textSize="15dp"
+				android:layout_gravity="bottom|right"
+				android:gravity="bottom|right" />
+		</LinearLayout>
 	</LinearLayout>
 </RelativeLayout>
