@@ -2427,92 +2427,92 @@ namespace TPTtimetable
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0800c1
-			public const int AA17 = 2131230913;
-			
 			// aapt resource value: 0x7f0800c2
-			public const int AA18 = 2131230914;
+			public const int AA17 = 2131230914;
+			
+			// aapt resource value: 0x7f0800c3
+			public const int AA18 = 2131230915;
 			
 			// aapt resource value: 0x7f080032
 			public const int ALT = 2131230770;
 			
-			// aapt resource value: 0x7f0800c3
-			public const int AV17 = 2131230915;
-			
 			// aapt resource value: 0x7f0800c4
-			public const int AV18 = 2131230916;
+			public const int AV17 = 2131230916;
+			
+			// aapt resource value: 0x7f0800c5
+			public const int AV18 = 2131230917;
 			
 			// aapt resource value: 0x7f080033
 			public const int CTRL = 2131230771;
 			
-			// aapt resource value: 0x7f0800c5
-			public const int EA17 = 2131230917;
-			
 			// aapt resource value: 0x7f0800c6
-			public const int EA18 = 2131230918;
+			public const int EA17 = 2131230918;
 			
 			// aapt resource value: 0x7f0800c7
-			public const int EV17 = 2131230919;
+			public const int EA18 = 2131230919;
 			
 			// aapt resource value: 0x7f0800c8
-			public const int EV18 = 2131230920;
+			public const int EV17 = 2131230920;
 			
 			// aapt resource value: 0x7f0800c9
-			public const int FS18 = 2131230921;
+			public const int EV18 = 2131230921;
+			
+			// aapt resource value: 0x7f0800ca
+			public const int FS18 = 2131230922;
 			
 			// aapt resource value: 0x7f080034
 			public const int FUNCTION = 2131230772;
 			
-			// aapt resource value: 0x7f0800ca
-			public const int IT16E = 2131230922;
-			
 			// aapt resource value: 0x7f0800cb
-			public const int IT16V = 2131230923;
+			public const int IT16E = 2131230923;
 			
 			// aapt resource value: 0x7f0800cc
-			public const int IT17E = 2131230924;
+			public const int IT16V = 2131230924;
 			
 			// aapt resource value: 0x7f0800cd
-			public const int IT17V = 2131230925;
+			public const int IT17E = 2131230925;
 			
 			// aapt resource value: 0x7f0800ce
-			public const int IT18E = 2131230926;
+			public const int IT17V = 2131230926;
 			
 			// aapt resource value: 0x7f0800cf
-			public const int IT18V = 2131230927;
+			public const int IT18E = 2131230927;
 			
 			// aapt resource value: 0x7f0800d0
-			public const int KEV17 = 2131230928;
+			public const int IT18V = 2131230928;
 			
 			// aapt resource value: 0x7f0800d1
-			public const int KIT17V = 2131230929;
+			public const int KEV17 = 2131230929;
 			
 			// aapt resource value: 0x7f0800d2
-			public const int KIT18E = 2131230930;
+			public const int KIT17V = 2131230930;
 			
 			// aapt resource value: 0x7f0800d3
-			public const int KK218V = 2131230931;
+			public const int KIT18E = 2131230931;
 			
 			// aapt resource value: 0x7f0800d4
-			public const int KTA17E = 2131230932;
+			public const int KK218V = 2131230932;
+			
+			// aapt resource value: 0x7f0800d5
+			public const int KTA17E = 2131230933;
 			
 			// aapt resource value: 0x7f080035
 			public const int META = 2131230773;
 			
-			// aapt resource value: 0x7f0800d5
-			public const int MM17 = 2131230933;
-			
 			// aapt resource value: 0x7f0800d6
-			public const int MM18 = 2131230934;
+			public const int MM17 = 2131230934;
 			
 			// aapt resource value: 0x7f0800d7
-			public const int MS18 = 2131230935;
+			public const int MM18 = 2131230935;
 			
 			// aapt resource value: 0x7f0800d8
-			public const int SA17 = 2131230936;
+			public const int MS18 = 2131230936;
 			
 			// aapt resource value: 0x7f0800d9
-			public const int SA18 = 2131230937;
+			public const int SA17 = 2131230937;
+			
+			// aapt resource value: 0x7f0800da
+			public const int SA18 = 2131230938;
 			
 			// aapt resource value: 0x7f080036
 			public const int SHIFT = 2131230774;
@@ -2520,47 +2520,47 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080037
 			public const int SYM = 2131230775;
 			
-			// aapt resource value: 0x7f0800da
-			public const int TA16E = 2131230938;
-			
 			// aapt resource value: 0x7f0800db
-			public const int TA16V = 2131230939;
+			public const int TA16E = 2131230939;
 			
 			// aapt resource value: 0x7f0800dc
-			public const int TA17E = 2131230940;
+			public const int TA16V = 2131230940;
 			
 			// aapt resource value: 0x7f0800dd
-			public const int TA17V = 2131230941;
+			public const int TA17E = 2131230941;
 			
 			// aapt resource value: 0x7f0800de
-			public const int TA18E = 2131230942;
+			public const int TA17V = 2131230942;
 			
 			// aapt resource value: 0x7f0800df
-			public const int TA18V = 2131230943;
+			public const int TA18E = 2131230943;
 			
 			// aapt resource value: 0x7f0800e0
-			public const int TJ18A = 2131230944;
+			public const int TA18V = 2131230944;
 			
 			// aapt resource value: 0x7f0800e1
-			public const int TS18E = 2131230945;
+			public const int TJ18A = 2131230945;
 			
 			// aapt resource value: 0x7f0800e2
-			public const int TS18T = 2131230946;
+			public const int TS18E = 2131230946;
 			
 			// aapt resource value: 0x7f0800e3
-			public const int TT17E = 2131230947;
+			public const int TS18T = 2131230947;
 			
 			// aapt resource value: 0x7f0800e4
-			public const int TT17T = 2131230948;
+			public const int TT17E = 2131230948;
 			
 			// aapt resource value: 0x7f0800e5
-			public const int TT18E = 2131230949;
+			public const int TT17T = 2131230949;
 			
 			// aapt resource value: 0x7f0800e6
-			public const int TT18T = 2131230950;
+			public const int TT18E = 2131230950;
 			
-			// aapt resource value: 0x7f0800ac
-			public const int action0 = 2131230892;
+			// aapt resource value: 0x7f0800e7
+			public const int TT18T = 2131230951;
+			
+			// aapt resource value: 0x7f0800ad
+			public const int action0 = 2131230893;
 			
 			// aapt resource value: 0x7f08007c
 			public const int action_bar = 2131230844;
@@ -2583,17 +2583,17 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08005a
 			public const int action_bar_title = 2131230810;
 			
-			// aapt resource value: 0x7f0800a9
-			public const int action_container = 2131230889;
+			// aapt resource value: 0x7f0800aa
+			public const int action_container = 2131230890;
 			
 			// aapt resource value: 0x7f08007d
 			public const int action_context_bar = 2131230845;
 			
-			// aapt resource value: 0x7f0800b0
-			public const int action_divider = 2131230896;
+			// aapt resource value: 0x7f0800b1
+			public const int action_divider = 2131230897;
 			
-			// aapt resource value: 0x7f0800aa
-			public const int action_image = 2131230890;
+			// aapt resource value: 0x7f0800ab
+			public const int action_image = 2131230891;
 			
 			// aapt resource value: 0x7f080003
 			public const int action_menu_divider = 2131230723;
@@ -2610,11 +2610,11 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08005c
 			public const int action_mode_close_button = 2131230812;
 			
-			// aapt resource value: 0x7f0800ab
-			public const int action_text = 2131230891;
+			// aapt resource value: 0x7f0800ac
+			public const int action_text = 2131230892;
 			
-			// aapt resource value: 0x7f0800b9
-			public const int actions = 2131230905;
+			// aapt resource value: 0x7f0800ba
+			public const int actions = 2131230906;
 			
 			// aapt resource value: 0x7f08005d
 			public const int activity_chooser_view_content = 2131230813;
@@ -2649,8 +2649,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080063
 			public const int buttonPanel = 2131230819;
 			
-			// aapt resource value: 0x7f0800ad
-			public const int cancel_action = 2131230893;
+			// aapt resource value: 0x7f0800ae
+			public const int cancel_action = 2131230894;
 			
 			// aapt resource value: 0x7f080045
 			public const int center = 2131230789;
@@ -2664,8 +2664,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080073
 			public const int checkbox = 2131230835;
 			
-			// aapt resource value: 0x7f0800b5
-			public const int chronometer = 2131230901;
+			// aapt resource value: 0x7f0800b6
+			public const int chronometer = 2131230902;
 			
 			// aapt resource value: 0x7f08004e
 			public const int clip_horizontal = 2131230798;
@@ -2715,8 +2715,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080020
 			public const int disableHome = 2131230752;
 			
-			// aapt resource value: 0x7f0800bc
-			public const int drawer_layout = 2131230908;
+			// aapt resource value: 0x7f0800bd
+			public const int drawer_layout = 2131230909;
 			
 			// aapt resource value: 0x7f08007e
 			public const int edit_query = 2131230846;
@@ -2724,8 +2724,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080030
 			public const int end = 2131230768;
 			
-			// aapt resource value: 0x7f0800bb
-			public const int end_padder = 2131230907;
+			// aapt resource value: 0x7f0800bc
+			public const int end_padder = 2131230908;
 			
 			// aapt resource value: 0x7f08003f
 			public const int enterAlways = 2131230783;
@@ -2769,8 +2769,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080062
 			public const int icon = 2131230818;
 			
-			// aapt resource value: 0x7f0800ba
-			public const int icon_group = 2131230906;
+			// aapt resource value: 0x7f0800bb
+			public const int icon_group = 2131230907;
 			
 			// aapt resource value: 0x7f08003a
 			public const int ifRoom = 2131230778;
@@ -2778,11 +2778,11 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08005f
 			public const int image = 2131230815;
 			
-			// aapt resource value: 0x7f0800a7
-			public const int imageView = 2131230887;
+			// aapt resource value: 0x7f0800a8
+			public const int imageView = 2131230888;
 			
-			// aapt resource value: 0x7f0800b6
-			public const int info = 2131230902;
+			// aapt resource value: 0x7f0800b7
+			public const int info = 2131230903;
 			
 			// aapt resource value: 0x7f080059
 			public const int italic = 2131230809;
@@ -2814,17 +2814,17 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080061
 			public const int list_item = 2131230817;
 			
-			// aapt resource value: 0x7f0800c0
-			public const int masked = 2131230912;
+			// aapt resource value: 0x7f0800c1
+			public const int masked = 2131230913;
 			
-			// aapt resource value: 0x7f0800af
-			public const int media_actions = 2131230895;
+			// aapt resource value: 0x7f0800b0
+			public const int media_actions = 2131230896;
 			
 			// aapt resource value: 0x7f08008d
 			public const int menuButton = 2131230861;
 			
-			// aapt resource value: 0x7f0800be
-			public const int message = 2131230910;
+			// aapt resource value: 0x7f0800bf
+			public const int message = 2131230911;
 			
 			// aapt resource value: 0x7f080031
 			public const int middle = 2131230769;
@@ -2835,29 +2835,29 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080028
 			public const int multiply = 2131230760;
 			
-			// aapt resource value: 0x7f0800bd
-			public const int nav_view = 2131230909;
+			// aapt resource value: 0x7f0800be
+			public const int nav_view = 2131230910;
 			
 			// aapt resource value: 0x7f080092
 			public const int navigation = 2131230866;
 			
-			// aapt resource value: 0x7f0800ec
-			public const int navigation_friday = 2131230956;
+			// aapt resource value: 0x7f0800ed
+			public const int navigation_friday = 2131230957;
 			
 			// aapt resource value: 0x7f08009a
 			public const int navigation_header_container = 2131230874;
 			
-			// aapt resource value: 0x7f0800e8
-			public const int navigation_monday = 2131230952;
-			
-			// aapt resource value: 0x7f0800eb
-			public const int navigation_thursday = 2131230955;
-			
 			// aapt resource value: 0x7f0800e9
-			public const int navigation_tuesday = 2131230953;
+			public const int navigation_monday = 2131230953;
+			
+			// aapt resource value: 0x7f0800ec
+			public const int navigation_thursday = 2131230956;
 			
 			// aapt resource value: 0x7f0800ea
-			public const int navigation_wednesday = 2131230954;
+			public const int navigation_tuesday = 2131230954;
+			
+			// aapt resource value: 0x7f0800eb
+			public const int navigation_wednesday = 2131230955;
 			
 			// aapt resource value: 0x7f08003b
 			public const int never = 2131230779;
@@ -2871,17 +2871,17 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08001e
 			public const int normal = 2131230750;
 			
-			// aapt resource value: 0x7f0800b8
-			public const int notification_background = 2131230904;
+			// aapt resource value: 0x7f0800b9
+			public const int notification_background = 2131230905;
+			
+			// aapt resource value: 0x7f0800b3
+			public const int notification_main_column = 2131230899;
 			
 			// aapt resource value: 0x7f0800b2
-			public const int notification_main_column = 2131230898;
+			public const int notification_main_column_container = 2131230898;
 			
-			// aapt resource value: 0x7f0800b1
-			public const int notification_main_column_container = 2131230897;
-			
-			// aapt resource value: 0x7f0800e7
-			public const int open_github = 2131230951;
+			// aapt resource value: 0x7f0800e8
+			public const int open_github = 2131230952;
 			
 			// aapt resource value: 0x7f08004c
 			public const int parallax = 2131230796;
@@ -2910,11 +2910,11 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08004a
 			public const int right = 2131230794;
 			
-			// aapt resource value: 0x7f0800b7
-			public const int right_icon = 2131230903;
+			// aapt resource value: 0x7f0800b8
+			public const int right_icon = 2131230904;
 			
-			// aapt resource value: 0x7f0800b3
-			public const int right_side = 2131230899;
+			// aapt resource value: 0x7f0800b4
+			public const int right_side = 2131230900;
 			
 			// aapt resource value: 0x7f08000c
 			public const int save_image_matrix = 2131230732;
@@ -3018,8 +3018,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f08004b
 			public const int start = 2131230795;
 			
-			// aapt resource value: 0x7f0800ae
-			public const int status_bar_latest_event_content = 2131230894;
+			// aapt resource value: 0x7f0800af
+			public const int status_bar_latest_event_content = 2131230895;
 			
 			// aapt resource value: 0x7f080076
 			public const int submenuarrow = 2131230838;
@@ -3045,26 +3045,29 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080069
 			public const int textSpacerNoTitle = 2131230825;
 			
-			// aapt resource value: 0x7f0800a8
-			public const int textView = 2131230888;
-			
-			// aapt resource value: 0x7f0800a2
-			public const int textView1 = 2131230882;
+			// aapt resource value: 0x7f0800a9
+			public const int textView = 2131230889;
 			
 			// aapt resource value: 0x7f0800a3
-			public const int textView2 = 2131230883;
+			public const int textView1 = 2131230883;
 			
 			// aapt resource value: 0x7f0800a4
-			public const int textView3 = 2131230884;
+			public const int textView2 = 2131230884;
+			
+			// aapt resource value: 0x7f0800a5
+			public const int textView3 = 2131230885;
 			
 			// aapt resource value: 0x7f0800a1
 			public const int textView4 = 2131230881;
 			
-			// aapt resource value: 0x7f0800a5
-			public const int textView5 = 2131230885;
-			
 			// aapt resource value: 0x7f0800a6
-			public const int textView6 = 2131230886;
+			public const int textView5 = 2131230886;
+			
+			// aapt resource value: 0x7f0800a7
+			public const int textView6 = 2131230887;
+			
+			// aapt resource value: 0x7f0800a2
+			public const int textView7 = 2131230882;
 			
 			// aapt resource value: 0x7f08008f
 			public const int textViewWeek = 2131230863;
@@ -3078,8 +3081,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080015
 			public const int textinput_error = 2131230741;
 			
-			// aapt resource value: 0x7f0800b4
-			public const int time = 2131230900;
+			// aapt resource value: 0x7f0800b5
+			public const int time = 2131230901;
 			
 			// aapt resource value: 0x7f08001c
 			public const int title = 2131230748;
@@ -3129,8 +3132,8 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f080016
 			public const int view_offset_helper = 2131230742;
 			
-			// aapt resource value: 0x7f0800bf
-			public const int visible = 2131230911;
+			// aapt resource value: 0x7f0800c0
+			public const int visible = 2131230912;
 			
 			// aapt resource value: 0x7f08003c
 			public const int withText = 2131230780;

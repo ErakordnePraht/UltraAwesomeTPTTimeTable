@@ -18,7 +18,11 @@ namespace TPTtimetable
         public Timer timer;
 
         TextView remainingTimerText;
+        TextView untilTimeText;
         DateTime endTime;
+        DateTime startTime;
+        DateTime timeOfDay;
+        bool nextTimer = false;
 
         Activity context;
 
@@ -53,20 +57,30 @@ namespace TPTtimetable
             view.FindViewById<TextView>(Resource.Id.textView3).Text = items[position].teachername;
             view.FindViewById<TextView>(Resource.Id.textView4).Text = items[position].start.ToString("HH:mm");
             view.FindViewById<TextView>(Resource.Id.textView5).Text = items[position].end.ToString("HH:mm");
-            view.FindViewById<TextView>(Resource.Id.textView6).Text = "";
+            remainingTimerText = view.FindViewById<TextView>(Resource.Id.textView6);
+            remainingTimerText.Text = "";
+            untilTimeText = view.FindViewById<TextView>(Resource.Id.textView7);
+            untilTimeText.Text = "";
 
-
-            var timeOfDay = DateTime.Now;
+            timeOfDay = DateTime.Now;
             if (timeOfDay > items[position].start && timeOfDay < items[position].end)
             {
                 view.SetBackgroundColor(Android.Graphics.Color.ParseColor("#424242"));
-                remainingTimerText = view.FindViewById<TextView>(Resource.Id.textView6);
                 endTime = items[position].end;
                 var remainingTime = endTime - timeOfDay;
                 remainingTime = remainingTime + new TimeSpan(0, 1, 0);
                 remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + " min.";
+                nextTimer = false;
                 TimerClass();
             }
+            //if (timeOfDay < items[position].start && !(timeOfDay > items[position].start && timeOfDay < items[position].end) && nextTimer == false)
+            //{
+            //    startTime = items[position + 1].start;
+            //    var remainingTime = startTime - timeOfDay;
+            //    remainingTime = remainingTime + new TimeSpan(0, 1, 0);
+            //    untilTimeText.Text = "Tunni alguseni: " + remainingTime.Minutes.ToString() + " min.";
+            //    nextTimer = true;
+            //}
 
             return view;
 
@@ -75,12 +89,12 @@ namespace TPTtimetable
         {
             timer = new Timer(1000);
             timer.Elapsed += new ElapsedEventHandler(OnElapsed);
-            timer.AutoReset = false;
+            timer.AutoReset = true;
             timer.Start();
         }
         private void OnElapsed(object sender, ElapsedEventArgs e)
         {
-            var timeOfDay = DateTime.Now;
+            timeOfDay = DateTime.Now;
             var remainingTime = endTime - timeOfDay;
             remainingTime = remainingTime + new TimeSpan(0,1,0);
             remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + " min.";
