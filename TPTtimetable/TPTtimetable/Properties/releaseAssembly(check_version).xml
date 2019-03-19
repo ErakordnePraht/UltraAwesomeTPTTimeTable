@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionName="1.0.1" package="tptTimetable.tptTimetable" android:installLocation="auto" android:versionCode="2">
+	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="26" />
+	<application android:allowBackup="true" android:icon="@mipmap/ic_launcher" android:label="@string/app_name" android:supportsRtl="true" android:theme="@style/AppTheme" android:debuggable="false"></application>
+</manifest>
