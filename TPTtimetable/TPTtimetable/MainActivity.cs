@@ -32,7 +32,7 @@ namespace TPTtimetable
         GestureListener _gestureListener;
         int crntSelection;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             AppCenter.Start("d256fb85-c190-4b81-a6cf-05ac0738a42e",
                    typeof(Analytics), typeof(Crashes), typeof(Distribute));
@@ -46,7 +46,7 @@ namespace TPTtimetable
             week = FindViewById<TextView>(Resource.Id.textViewWeek);
 
             GetTimetable getTimeTable = new GetTimetable();
-            var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+            var timeTable = await getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
             GetWeekDates getWeekDates = new GetWeekDates();
@@ -80,7 +80,7 @@ namespace TPTtimetable
             drawer.OpenDrawer(drawerView);
         }
 
-        private void Drawer_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        private async void Drawer_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             Analytics.TrackEvent(e.MenuItem.TitleFormatted.ToString());
 
@@ -213,7 +213,7 @@ namespace TPTtimetable
             }
             Preferences.Set("class_num", ClassNum);
             GetTimetable getTimeTable = new GetTimetable();
-            var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+            var timeTable = await getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
             FullTimeTable = getTimeTable.SortByDay(timeTable);
             Preferences.Set("class_num", ClassNum);
             ClickCurrentDay();
@@ -221,28 +221,28 @@ namespace TPTtimetable
             drawerlayout.CloseDrawers();
         }
 
-        private void PrevWeekBtn_Click(object sender, EventArgs e)
+        private async void PrevWeekBtn_Click(object sender, EventArgs e)
         {
             GetWeekDates getWeekDates = new GetWeekDates();
             GetTimetable getTimeTable = new GetTimetable();
 
             ChosenMonday = getWeekDates.GetPreviousWeek(ChosenMonday);
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
-            var timeTable = getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
+            var timeTable = await getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
             ClickCurrentDay(crntSelection);
             week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
         }
 
-        private void NextWeekBtn_Click(object sender, EventArgs e)
+        private async void NextWeekBtn_Click(object sender, EventArgs e)
         {
             GetWeekDates getWeekDates = new GetWeekDates();
             GetTimetable getTimeTable = new GetTimetable();
 
             ChosenMonday = getWeekDates.GetNextWeek(ChosenMonday);
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
-            var timeTable = getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
+            var timeTable = await getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
             FullTimeTable = getTimeTable.SortByDay(timeTable);
 
             ClickCurrentDay(crntSelection);

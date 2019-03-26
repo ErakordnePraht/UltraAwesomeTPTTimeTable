@@ -5,17 +5,19 @@ using Newtonsoft.Json;
 using System.Net;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TPTtimetable
 {
     class GetTimetable
     {
-        public List<Tund> Pull(string url)
+        public async Task<List<Tund>> Pull(string url)
         {
             string html = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+            request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (HttpWebResponse response = (HttpWebResponse) await request.GetResponseAsync())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
