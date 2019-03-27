@@ -23,7 +23,7 @@ namespace TPTtimetable
     {
         TextView week;
         ListView list;
-        public static SchoolWeek FullTimeTable { get; set; }
+        public static SchoolWeekClass FullTimeTable { get; set; }
         public static DateTime ChosenMonday { get; set; }
         public static DateTime ChosenSunday { get; set; }
         public static string ClassNum { get; set; }

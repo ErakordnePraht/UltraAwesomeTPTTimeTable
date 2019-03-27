@@ -70,9 +70,9 @@ namespace TPTtimetable
             return timetable;
         }
 
-        public SchoolWeek SortByDay(List<Tund> timetable)
+        public SchoolWeekClass SortByDay(List<Tund> timetable)
         {
-            SchoolWeek schoolWeek = new SchoolWeek()
+            SchoolWeekClass schoolWeek = new SchoolWeekClass()
             {
                 Monday = new List<Tund>(),
                 Tuesday = new List<Tund>(),
@@ -126,14 +126,5 @@ namespace TPTtimetable
         public string teachername { get; set; }
         public DateTime start { get; set; }
         public DateTime end { get; set; }
-    }
-
-    public class SchoolWeek
-    {
-        public List<Tund> Monday { get; set; }
-        public List<Tund> Tuesday { get; set; }
-        public List<Tund> Wednesday { get; set; }
-        public List<Tund> Thursday { get; set; }
-        public List<Tund> Friday { get; set; }
     }
 }
