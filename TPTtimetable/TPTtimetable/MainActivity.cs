@@ -44,17 +44,23 @@ namespace TPTtimetable
 
             list = FindViewById<ListView>(Resource.Id.listView1);
             week = FindViewById<TextView>(Resource.Id.textViewWeek);
+            try
+            {
+                GetTimetable getTimeTable = new GetTimetable();
+                var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+                FullTimeTable = getTimeTable.SortByDay(timeTable);
 
-            GetTimetable getTimeTable = new GetTimetable();
-            var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
-            FullTimeTable = getTimeTable.SortByDay(timeTable);
+                ClickCurrentDay();
+            }
+            catch (Exception)
+            {
+                Toast.MakeText(this, "You have no connection to the internet", ToastLength.Long).Show();
+            }
 
             GetWeekDates getWeekDates = new GetWeekDates();
             ChosenMonday = getWeekDates.GetMonday(DateTime.Now);
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
             week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
-
-            ClickCurrentDay();
 
             var nextWeekBtn = FindViewById<ImageButton>(Resource.Id.nextWeekBtn);
             var prevWeekBtn = FindViewById<ImageButton>(Resource.Id.prevWeekBtn);
