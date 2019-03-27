@@ -36,15 +36,9 @@ namespace TPTtimetable
             }
         }
 
-        public static void AddNote(string title, string content)
+        public static void AddNote(SchoolWeekClass schoolWeek)
         {
-            var newNote = new SchoolWeekClass();
-            db.Insert(newNote);
-        }
-        public static void EditNote(string newTitle, string newContent, long id)
-        {
-            var editedNote = new SchoolWeekClass();
-            db.Update(editedNote);
+            db.Insert(schoolWeek);
         }
 
         public static void DeleteNote(long id)
@@ -56,6 +50,10 @@ namespace TPTtimetable
         {
             var table = db.Table<SchoolWeekClass>();
             return table;
+        }
+        public static void DeleteEverything()
+        {
+            db.DropTable<SchoolWeekClass>();
         }
     }
 }

@@ -9,11 +9,14 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using SQLite;
 
 namespace TPTtimetable
 {
-    public class SchoolWeekClass
+    class SchoolWeekClass
     {
+        [PrimaryKey, AutoIncrement, Column("_id")]
+        public long Id { get; set; }
         public List<Tund> Monday { get; set; }
         public List<Tund> Tuesday { get; set; }
         public List<Tund> Wednesday { get; set; }

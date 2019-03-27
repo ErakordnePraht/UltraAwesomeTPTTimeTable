@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System;
 using Android.Support.V4.Widget;
 using Android.Content;
+using System.IO;
 
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Distribute;
@@ -23,7 +24,7 @@ namespace TPTtimetable
     {
         TextView week;
         ListView list;
-        public static SchoolWeekClass FullTimeTable { get; set; }
+        static SchoolWeekClass FullTimeTable { get; set; }
         public static DateTime ChosenMonday { get; set; }
         public static DateTime ChosenSunday { get; set; }
         public static string ClassNum { get; set; }
@@ -45,17 +46,6 @@ namespace TPTtimetable
             list = FindViewById<ListView>(Resource.Id.listView1);
             week = FindViewById<TextView>(Resource.Id.textViewWeek);
 
-            GetTimetable getTimeTable = new GetTimetable();
-            var timeTable = await getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
-            FullTimeTable = getTimeTable.SortByDay(timeTable);
-
-            GetWeekDates getWeekDates = new GetWeekDates();
-            ChosenMonday = getWeekDates.GetMonday(DateTime.Now);
-            ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
-            week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
-
-            ClickCurrentDay();
-
             var nextWeekBtn = FindViewById<ImageButton>(Resource.Id.nextWeekBtn);
             var prevWeekBtn = FindViewById<ImageButton>(Resource.Id.prevWeekBtn);
             var drawer = FindViewById<NavigationView>(Resource.Id.nav_view);
@@ -71,6 +61,28 @@ namespace TPTtimetable
             _gestureListener.LeftEvent += GestureLeft;
             _gestureListener.RightEvent += GestureRight;
             _gestureDetector = new GestureDetector(this, _gestureListener);
+
+            //DatabaseService.DeleteEverything();
+
+            GetTimetable getTimeTable = new GetTimetable();
+            if (!File.Exists(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), "TPTTunniplaan.db3")))
+            {
+                FullTimeTable = DatabaseService.GetAllNotes().ToList()[0];
+            }
+            else
+            {
+                var timeTable = await getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+                FullTimeTable = getTimeTable.SortByDay(timeTable);
+                DatabaseService.CreateDatabase();
+                DatabaseService.AddNote(FullTimeTable);
+            }
+
+            GetWeekDates getWeekDates = new GetWeekDates();
+            ChosenMonday = getWeekDates.GetMonday(DateTime.Now);
+            ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
+            week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
+
+            ClickCurrentDay();
         }
 
         private void MenuButton_Click(object sender, EventArgs e)

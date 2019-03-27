@@ -118,13 +118,4 @@ namespace TPTtimetable
         public DateTime end { get; set; }
         public string className { get; set; }
     }
-
-    public class Tund
-    {
-        public string lessonname { get; set; }
-        public string classname { get; set; }
-        public string teachername { get; set; }
-        public DateTime start { get; set; }
-        public DateTime end { get; set; }
-    }
 }
