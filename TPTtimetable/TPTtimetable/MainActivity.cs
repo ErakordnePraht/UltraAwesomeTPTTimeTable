@@ -52,7 +52,7 @@ namespace TPTtimetable
 
                 ClickCurrentDay();
             }
-            catch (Exception)
+            catch (System.Net.WebException)
             {
                 Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
                 Android.App.AlertDialog alert = dialog.Create();
