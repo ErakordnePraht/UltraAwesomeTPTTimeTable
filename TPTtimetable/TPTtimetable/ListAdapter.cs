@@ -74,40 +74,31 @@ namespace TPTtimetable
 
             view.Click += (object sender, EventArgs e) =>
             {
+                if (untilTimerText != null)
+                {
+                    untilTimerText.Text = "";
+                }
                 var timeOfDay2 = DateTime.Now;
                 DateTime startTime;
 
                 untilTimerText = view.FindViewById<TextView>(Resource.Id.textView7);
-
-
-                DayOfWeek currentDay = DateTime.Now.DayOfWeek;
-                switch (currentDay)
-                {
-                    case DayOfWeek.Monday:
-                        startTime = items[position].start;
-                        break;
-                    case DayOfWeek.Tuesday:
-                        startTime = items[position].start;
-                        break;
-                    case DayOfWeek.Wednesday:
-                        startTime = items[position].start;
-                        break;
-                    case DayOfWeek.Thursday:
-                        startTime = items[position].start;
-                        break;
-                    case DayOfWeek.Friday:
-                        startTime = items[position].start;
-                        break;
-                    default:
-                        startTime = items[position].start;
-                        break;
-                }
+                startTime = items[position].start;
 
                 var remainingTime = startTime - timeOfDay2;
                 remainingTime = remainingTime + new TimeSpan(0, 1, 0);
-                untilTimerText.Text = "Tunni alguseni: " + remainingTime.Minutes.ToString() + " min.";
+                if (timeOfDay2 < startTime)
+                {
+                    if (remainingTime > new TimeSpan(1, 0, 0))
+                    {
+                        untilTimerText.Text = "Tunni alguseni: " + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
+                    }
+                    else
+                    {
+                        untilTimerText.Text = "Tunni alguseni: " + remainingTime.Minutes.ToString() + "m.";
+                    }
+                }
             };
-                return view;
+            return view;
 
         }
 
@@ -122,7 +113,7 @@ namespace TPTtimetable
         {
             var timeOfDay = DateTime.Now;
             var remainingTime = endTime - timeOfDay;
-            remainingTime = remainingTime + new TimeSpan(0,1,0);
+            remainingTime = remainingTime + new TimeSpan(0, 1, 0);
             remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + " min.";
             timer.Start(); // Restart timer
         }
