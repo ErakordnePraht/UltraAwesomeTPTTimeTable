@@ -18,7 +18,7 @@ namespace TPTtimetable
         public Timer timer;
 
         TextView remainingTimerText;
-        TextView untilTimeText;
+        TextView untilTimerText;
         DateTime endTime;
         //DateTime startTime;
         //bool nextTimer = false;
@@ -71,18 +71,46 @@ namespace TPTtimetable
                 //nextTimer = false;
                 TimerClass();
             }
-            //if (timeOfDay < items[position].start && !(timeOfDay > items[position].start && timeOfDay < items[position].end) && nextTimer == false)
-            //{
-            //    startTime = items[position + 1].start;
-            //    var remainingTime = startTime - timeOfDay;
-            //    remainingTime = remainingTime + new TimeSpan(0, 1, 0);
-            //    untilTimeText.Text = "Tunni alguseni: " + remainingTime.Minutes.ToString() + " min.";
-            //    nextTimer = true;
-            //}
 
-            return view;
+            view.Click += (object sender, EventArgs e) =>
+            {
+                var timeOfDay2 = DateTime.Now;
+                DateTime startTime;
+
+                untilTimerText = view.FindViewById<TextView>(Resource.Id.textView7);
+
+
+                DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+                switch (currentDay)
+                {
+                    case DayOfWeek.Monday:
+                        startTime = items[position].start;
+                        break;
+                    case DayOfWeek.Tuesday:
+                        startTime = items[position].start;
+                        break;
+                    case DayOfWeek.Wednesday:
+                        startTime = items[position].start;
+                        break;
+                    case DayOfWeek.Thursday:
+                        startTime = items[position].start;
+                        break;
+                    case DayOfWeek.Friday:
+                        startTime = items[position].start;
+                        break;
+                    default:
+                        startTime = items[position].start;
+                        break;
+                }
+
+                var remainingTime = startTime - timeOfDay2;
+                remainingTime = remainingTime + new TimeSpan(0, 1, 0);
+                untilTimerText.Text = "Tunni alguseni: " + remainingTime.Minutes.ToString() + " min.";
+            };
+                return view;
 
         }
+
         public void TimerClass()
         {
             timer = new Timer(1000);
