@@ -86,7 +86,7 @@ namespace TPTtimetable
 
                 var remainingTime = startTime - timeOfDay2;
                 remainingTime = remainingTime + new TimeSpan(0, 1, 0);
-                if (timeOfDay2 < startTime)
+                if (timeOfDay2 < startTime && remainingTime < new TimeSpan(23, 59, 59))
                 {
                     if (remainingTime > new TimeSpan(1, 0, 0))
                     {
