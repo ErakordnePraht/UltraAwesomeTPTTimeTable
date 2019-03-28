@@ -10,11 +10,13 @@ using System.Collections.Generic;
 using System;
 using Android.Support.V4.Widget;
 using Android.Content;
+using Newtonsoft.Json;
 
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Distribute;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using System.Threading.Tasks;
 
 namespace TPTtimetable
 {
@@ -44,26 +46,37 @@ namespace TPTtimetable
 
             list = FindViewById<ListView>(Resource.Id.listView1);
             week = FindViewById<TextView>(Resource.Id.textViewWeek);
-            try
-            {
-                GetTimetable getTimeTable = new GetTimetable();
-                var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
-                FullTimeTable = getTimeTable.SortByDay(timeTable);
 
-                ClickCurrentDay();
-            }
-            catch (Exception)
+            string timetableJson = Preferences.Get("timetable", null);
+            if (timetableJson == null)
             {
-                Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
-                Android.App.AlertDialog alert = dialog.Create();
-                alert.SetTitle("Error");
-                alert.SetMessage("You have no connection to the internet");
-                alert.SetButton("Ok", (c, ev) =>
+                try
                 {
-                    this.FinishAffinity();
-                });
-                alert.Show();
+                    GetTimetable getTimeTable = new GetTimetable();
+                    FullTimeTable = getTimeTable.Run("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+                }
+                catch (Exception)
+                {
+                    Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
+                    Android.App.AlertDialog alert = dialog.Create();
+                    alert.SetTitle("Error");
+                    alert.SetMessage("You have no connection to the internet");
+                    alert.SetButton("Ok", (c, ev) =>
+                    {
+                        this.FinishAffinity();
+                    });
+                    alert.Show();
+                }
             }
+            else
+            {
+                FullTimeTable = JsonConvert.DeserializeObject<SchoolWeek>(timetableJson);
+                UpdateTimeTable();
+                //GetTimetable getTimeTable = new GetTimetable();
+                //var task = Task.Run(() => FullTimeTable = getTimeTable.Run("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum));
+            }
+
+            ClickCurrentDay();
 
             GetWeekDates getWeekDates = new GetWeekDates();
             ChosenMonday = getWeekDates.GetMonday(DateTime.Now);
@@ -92,6 +105,14 @@ namespace TPTtimetable
             var drawer = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
             var drawerView = FindViewById<NavigationView>(Resource.Id.nav_view);
             drawer.OpenDrawer(drawerView);
+        }
+
+        private async Task<string> UpdateTimeTable()
+        {
+            GetTimetable getTimeTable = new GetTimetable();
+            FullTimeTable = getTimeTable.Run("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+            ClickCurrentDay();
+            return "aa";
         }
 
         private void Drawer_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
@@ -242,8 +263,7 @@ namespace TPTtimetable
 
             ChosenMonday = getWeekDates.GetPreviousWeek(ChosenMonday);
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
-            var timeTable = getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
-            FullTimeTable = getTimeTable.SortByDay(timeTable);
+            FullTimeTable = getTimeTable.Run(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
 
             ClickCurrentDay(crntSelection);
             week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
@@ -256,8 +276,7 @@ namespace TPTtimetable
 
             ChosenMonday = getWeekDates.GetNextWeek(ChosenMonday);
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
-            var timeTable = getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
-            FullTimeTable = getTimeTable.SortByDay(timeTable);
+            FullTimeTable = getTimeTable.Run(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
 
             ClickCurrentDay(crntSelection);
             week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");

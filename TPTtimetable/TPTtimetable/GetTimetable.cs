@@ -5,11 +5,19 @@ using Newtonsoft.Json;
 using System.Net;
 using System.IO;
 using System.Text;
+using Android.Content.Res;
+using Xamarin.Essentials;
 
 namespace TPTtimetable
 {
     class GetTimetable
     {
+        public SchoolWeek Run(string url)
+        {
+            var timetable = Pull(url);
+            return SortByDay(timetable);
+        }
+
         public List<Tund> Pull(string url)
         {
             string html = string.Empty;
@@ -103,6 +111,11 @@ namespace TPTtimetable
                         break;
                 }
             }
+
+            var a = JsonConvert.SerializeObject(schoolWeek);
+            Preferences.Set("timetable", a.ToString());
+
+
             return schoolWeek;
         }
     }
