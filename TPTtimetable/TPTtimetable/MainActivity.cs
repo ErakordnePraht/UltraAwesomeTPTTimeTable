@@ -54,7 +54,15 @@ namespace TPTtimetable
             }
             catch (Exception)
             {
-                Toast.MakeText(this, "You have no connection to the internet", ToastLength.Long).Show();
+                Android.App.AlertDialog.Builder dialog = new Android.App.AlertDialog.Builder(this);
+                Android.App.AlertDialog alert = dialog.Create();
+                alert.SetTitle("Error");
+                alert.SetMessage("You have no connection to the internet");
+                alert.SetButton("Ok", (c, ev) =>
+                {
+                    this.FinishAffinity();
+                });
+                alert.Show();
             }
 
             GetWeekDates getWeekDates = new GetWeekDates();
