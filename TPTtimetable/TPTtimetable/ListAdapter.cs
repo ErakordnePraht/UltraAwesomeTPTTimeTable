@@ -20,8 +20,9 @@ namespace TPTtimetable
         TextView remainingTimerText;
         TextView untilTimerText;
         DateTime endTime;
-        //DateTime startTime;
-        //bool nextTimer = false;
+        DateTime startTime;
+        View timedView;
+
 
         Activity context;
 
@@ -65,10 +66,11 @@ namespace TPTtimetable
                 remainingTimerText = view.FindViewById<TextView>(Resource.Id.textView6);
                 view.SetBackgroundColor(Android.Graphics.Color.ParseColor("#424242"));
                 endTime = items[position].end;
+                startTime = items[position].start;
+                timedView = view;
                 var remainingTime = endTime - timeOfDay;
                 remainingTime = remainingTime + new TimeSpan(0, 1, 0);
                 remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + " min.";
-                //nextTimer = false;
                 TimerClass();
             }
 
@@ -112,10 +114,18 @@ namespace TPTtimetable
         private void OnElapsed(object sender, ElapsedEventArgs e)
         {
             var timeOfDay = DateTime.Now;
-            var remainingTime = endTime - timeOfDay;
-            remainingTime = remainingTime + new TimeSpan(0, 1, 0);
-            remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + " min.";
-            timer.Start(); // Restart timer
+            if (timeOfDay > startTime && timeOfDay < endTime)
+            {
+                var remainingTime = endTime - timeOfDay;
+                remainingTime = remainingTime + new TimeSpan(0, 1, 0);
+                remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + " min.";
+                timer.Start(); // Restart timer
+            }
+            else
+            {
+                timedView.SetBackgroundColor(Android.Graphics.Color.ParseColor("#2E2E2E"));
+                remainingTimerText.Text = "";
+            }
         }
     }
 
