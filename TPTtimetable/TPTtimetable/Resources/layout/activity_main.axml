@@ -50,6 +50,15 @@
 			android:background="?android:attr/colorPrimary"
 			android:id="@+id/nextWeekBtn" />
 	</android.support.v7.widget.Toolbar>
+	<ProgressBar
+		android:layout_width="match_parent"
+		android:layout_height="200px"
+		android:visibility="invisible"
+		android:layout_gravity="center"
+		android:foregroundGravity="center_vertical|center_horizontal" 
+		android:indeterminateTint="@color/colorPrimaryNavBar"
+		android:layout_below="@id/toolbar"
+		android:id="@+id/progressBar1" />
 	<ListView
 		android:minWidth="25px"
 		android:minHeight="25px"

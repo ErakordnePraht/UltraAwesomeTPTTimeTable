@@ -5,26 +5,36 @@ using Newtonsoft.Json;
 using System.Net;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TPTtimetable
 {
     class GetTimetable
     {
-        public List<Tund> Pull(string url)
+        public async Task<List<Tund>> Pull(string url)
         {
             string html = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
-                html = reader.ReadToEnd();
+                html = await reader.ReadToEndAsync();
             }
 
             var timetablejson = html.Substring(7480);
             timetablejson = timetablejson.Substring(0, timetablejson.IndexOf(']') + 1);
-            var timetableobject = JsonConvert.DeserializeObject<IList<JsonTund>>(timetablejson);
+            IList<JsonTund> timetableobject;
+            //Siin on try-catch et äpp ei paneks kokku kui timetablejson on tühi
+            try
+            {
+                timetableobject = JsonConvert.DeserializeObject<IList<JsonTund>>(timetablejson);
+            }
+            catch
+            {
+                return null;
+            }
             List<Tund> timetable = new List<Tund>();
             foreach (var item in timetableobject)
             {

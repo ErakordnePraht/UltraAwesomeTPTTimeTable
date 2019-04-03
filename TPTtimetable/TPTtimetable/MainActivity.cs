@@ -28,11 +28,13 @@ namespace TPTtimetable
         public static DateTime ChosenSunday { get; set; }
         public static string ClassNum { get; set; }
 
+        public ProgressBar loader;
+
         GestureDetector _gestureDetector;
         GestureListener _gestureListener;
         int crntSelection;
 
-        protected override void OnCreate(Bundle savedInstanceState)
+        protected override async void OnCreate(Bundle savedInstanceState)
         {
             AppCenter.Start("d256fb85-c190-4b81-a6cf-05ac0738a42e",
                    typeof(Analytics), typeof(Crashes), typeof(Distribute));
@@ -42,15 +44,19 @@ namespace TPTtimetable
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.side_panel);
 
+            loader = FindViewById<ProgressBar>(Resource.Id.progressBar1);
+            loader.Visibility = Android.Views.ViewStates.Visible;
+
             list = FindViewById<ListView>(Resource.Id.listView1);
             week = FindViewById<TextView>(Resource.Id.textViewWeek);
             try
             {
                 GetTimetable getTimeTable = new GetTimetable();
-                var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+                var timeTable = await getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
                 FullTimeTable = getTimeTable.SortByDay(timeTable);
 
                 ClickCurrentDay();
+                loader.Visibility = Android.Views.ViewStates.Invisible;
             }
             catch (System.Net.WebException)
             {
@@ -94,7 +100,7 @@ namespace TPTtimetable
             drawer.OpenDrawer(drawerView);
         }
 
-        private void Drawer_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
+        private async void Drawer_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
             Analytics.TrackEvent(e.MenuItem.TitleFormatted.ToString());
 
@@ -227,37 +233,55 @@ namespace TPTtimetable
             }
             Preferences.Set("class_num", ClassNum);
             GetTimetable getTimeTable = new GetTimetable();
-            var timeTable = getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
+            list.Visibility = ViewStates.Invisible;
+            loader.Visibility = ViewStates.Visible;
+            var timeTable = await getTimeTable.Pull("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp=" + ClassNum);
             FullTimeTable = getTimeTable.SortByDay(timeTable);
+            list.Visibility = ViewStates.Visible;
+            loader.Visibility = ViewStates.Invisible;
             Preferences.Set("class_num", ClassNum);
             ClickCurrentDay();
 
             drawerlayout.CloseDrawers();
         }
 
-        private void PrevWeekBtn_Click(object sender, EventArgs e)
+        private async void PrevWeekBtn_Click(object sender, EventArgs e)
         {
             GetWeekDates getWeekDates = new GetWeekDates();
             GetTimetable getTimeTable = new GetTimetable();
 
             ChosenMonday = getWeekDates.GetPreviousWeek(ChosenMonday);
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
-            var timeTable = getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
-            FullTimeTable = getTimeTable.SortByDay(timeTable);
+            list.Visibility = ViewStates.Invisible;
+            loader.Visibility = ViewStates.Visible;
+            var timeTable = await getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
+            if (timeTable != null)
+            {
+                FullTimeTable = getTimeTable.SortByDay(timeTable);
+                list.Visibility = ViewStates.Visible;
+                loader.Visibility = ViewStates.Invisible;
+            }
 
             ClickCurrentDay(crntSelection);
             week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
         }
 
-        private void NextWeekBtn_Click(object sender, EventArgs e)
+        private async void NextWeekBtn_Click(object sender, EventArgs e)
         {
             GetWeekDates getWeekDates = new GetWeekDates();
             GetTimetable getTimeTable = new GetTimetable();
 
             ChosenMonday = getWeekDates.GetNextWeek(ChosenMonday);
             ChosenSunday = getWeekDates.GetSunday(ChosenMonday);
-            var timeTable = getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
-            FullTimeTable = getTimeTable.SortByDay(timeTable);
+            list.Visibility = ViewStates.Invisible;
+            loader.Visibility = ViewStates.Visible;
+            var timeTable = await getTimeTable.Pull(string.Format("https://tpt.siseveeb.ee/veebivormid/tunniplaan/tunniplaan?oppegrupp={0}&nadal={1}", ClassNum, ChosenMonday.ToString("dd.MM.yyyy")));
+            if (timeTable != null)
+            {
+                FullTimeTable = getTimeTable.SortByDay(timeTable);
+                list.Visibility = ViewStates.Visible;
+                loader.Visibility = ViewStates.Invisible;
+            }
 
             ClickCurrentDay(crntSelection);
             week.Text = ChosenMonday.ToString("dd/MM") + " - " + ChosenSunday.ToString("dd/MM");
@@ -389,8 +413,15 @@ namespace TPTtimetable
 
         public override bool DispatchTouchEvent(MotionEvent ev)
         {
-            _gestureDetector.OnTouchEvent(ev);
-            return base.DispatchTouchEvent(ev);
+            try
+            {
+                _gestureDetector.OnTouchEvent(ev);
+                return base.DispatchTouchEvent(ev);
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
