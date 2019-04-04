@@ -70,7 +70,14 @@ namespace TPTtimetable
                 timedView = view;
                 var remainingTime = endTime - timeOfDay;
                 remainingTime = remainingTime + new TimeSpan(0, 1, 0);
-                remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + " min.";
+                if (remainingTime > new TimeSpan(1, 0, 0))
+                {
+                    remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
+                }
+                else
+                {
+                    remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + "m.";
+                }
                 TimerClass();
             }
 
@@ -118,7 +125,14 @@ namespace TPTtimetable
             {
                 var remainingTime = endTime - timeOfDay;
                 remainingTime = remainingTime + new TimeSpan(0, 1, 0);
-                remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + " min.";
+                if (remainingTime > new TimeSpan(1, 0, 0))
+                {
+                    remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
+                }
+                else
+                {
+                    remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + "m.";
+                }
                 timer.Start(); // Restart timer
             }
             else
