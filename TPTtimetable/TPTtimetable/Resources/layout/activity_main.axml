@@ -52,9 +52,12 @@
 	</android.support.v7.widget.Toolbar>
 	<ProgressBar
 		android:layout_width="match_parent"
-		android:layout_height="200px"
+		android:layout_height="match_parent"
+		android:scaleY="0.3"
+		android:scaleX="0.3"
 		android:visibility="invisible"
 		android:layout_gravity="center"
+		android:layout_marginBottom="60dp"
 		android:foregroundGravity="center_vertical|center_horizontal" 
 		android:indeterminateTint="@color/colorPrimaryNavBar"
 		android:layout_below="@id/toolbar"
