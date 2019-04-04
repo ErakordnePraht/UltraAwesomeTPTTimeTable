@@ -22,19 +22,20 @@ namespace TPTtimetable
             {
                 html = await reader.ReadToEndAsync();
             }
-
-            var timetablejson = html.Substring(7480);
-            timetablejson = timetablejson.Substring(0, timetablejson.IndexOf(']') + 1);
+            string timetablejson = html;
+            int indexOfFirstPhrase = html.IndexOf("events: ");
+            if (indexOfFirstPhrase >= 0)
+            {
+                indexOfFirstPhrase += "events: ".Length;
+                int indexOfSecondPhrase = html.IndexOf(",\n			lessons:", indexOfFirstPhrase);
+                if (indexOfSecondPhrase >= 0)
+                    timetablejson = html.Substring(indexOfFirstPhrase, indexOfSecondPhrase - indexOfFirstPhrase);
+                else
+                    timetablejson = html.Substring(indexOfFirstPhrase);
+            }
             IList<JsonTund> timetableobject;
             //Siin on try-catch et äpp ei paneks kokku kui timetablejson on tühi
-            try
-            {
-                timetableobject = JsonConvert.DeserializeObject<IList<JsonTund>>(timetablejson);
-            }
-            catch
-            {
-                return null;
-            }
+            timetableobject = JsonConvert.DeserializeObject<IList<JsonTund>>(timetablejson);
             List<Tund> timetable = new List<Tund>();
             foreach (var item in timetableobject)
             {
@@ -53,8 +54,15 @@ namespace TPTtimetable
                 {
                     classname = lessonname.Substring(lessonname.IndexOf(';') + 2);
                     classname = classname.Substring(classname.IndexOf("-") + 2, 4);
-                    lessonname = lessonname.Substring(0, lessonname.IndexOf('<') - 1);
-
+                    try
+                    {
+                        lessonname = lessonname.Substring(0, lessonname.IndexOf('<') - 1);
+                    }
+                    catch (Exception)
+                    {
+                        teachername = "";
+                        classname = "";
+                    }
                 }
                 //Some lessons have an extra HTML element: "valikaine", this code removes it from the teachername variable.
                 //This also fixes classname.
