@@ -7,27 +7,28 @@ using System.IO;
 using System.Text;
 using Android.Content.Res;
 using Xamarin.Essentials;
+using System.Threading.Tasks;
 
 namespace TPTtimetable
 {
     class GetTimetable
     {
-        public SchoolWeek Run(string url)
+        public async Task<SchoolWeek> Run(string url)
         {
-            var timetable = Pull(url);
+            var timetable = await Pull(url);
             return SortByDay(timetable);
         }
 
-        public List<Tund> Pull(string url)
+        public async Task<List<Tund>> Pull(string url)
         {
             string html = string.Empty;
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
 
-            using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
+            using (HttpWebResponse response = (HttpWebResponse) await request.GetResponseAsync())
             using (Stream stream = response.GetResponseStream())
             using (StreamReader reader = new StreamReader(stream))
             {
-                html = reader.ReadToEnd();
+                html = await reader.ReadToEndAsync();
             }
 
             var timetablejson = html.Substring(7480);
