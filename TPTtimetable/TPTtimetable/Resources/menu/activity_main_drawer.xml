@@ -120,7 +120,7 @@
        android:title="TT-18T" />
   </group>
 
-  <item android:title="Our Project Repo">
+  <item android:title="@string/gitText">
     <menu>
       <item
           android:id="@+id/open_github"

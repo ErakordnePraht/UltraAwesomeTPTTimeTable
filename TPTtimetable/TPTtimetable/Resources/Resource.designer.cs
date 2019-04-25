@@ -3713,6 +3713,12 @@ namespace TPTtimetable
 			// aapt resource value: 0x7f090020
 			public const int character_counter_pattern = 2131296288;
 			
+			// aapt resource value: 0x7f090069
+			public const int cred = 2131296361;
+			
+			// aapt resource value: 0x7f090068
+			public const int gitText = 2131296360;
+			
 			// aapt resource value: 0x7f090021
 			public const int password_toggle_content_description = 2131296289;
 			
@@ -3748,6 +3754,12 @@ namespace TPTtimetable
 			
 			// aapt resource value: 0x7f090063
 			public const int title_wednesday = 2131296355;
+			
+			// aapt resource value: 0x7f090066
+			public const int untilEnd = 2131296358;
+			
+			// aapt resource value: 0x7f090067
+			public const int untilStart = 2131296359;
 			
 			static String()
 			{

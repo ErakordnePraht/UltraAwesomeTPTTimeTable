@@ -1,8 +1,12 @@
 <resources>
-    <string name="app_name">TPT Tunniplaan</string>
-    <string name="title_monday">Esmaspäev</string>
-    <string name="title_tuesday">Teisipäev</string>
-    <string name="title_wednesday">Kolmapäev</string>
-    <string name="title_thursday">Neljapäev</string>
-    <string name="title_friday">Reede</string>
+    <string name="app_name">TPT Timetable</string>
+    <string name="title_monday">Monday</string>
+    <string name="title_tuesday">Tuesday</string>
+    <string name="title_wednesday">Wednesday</string>
+    <string name="title_thursday">Thursday</string>
+    <string name="title_friday">Friday</string>
+    <string name="untilEnd">Lesson ends in: </string>
+    <string name="untilStart">Lesson starts in: </string>
+    <string name="gitText">Our Project Repo</string>
+    <string name="cred">Made by the TA-17E class</string>
 </resources>

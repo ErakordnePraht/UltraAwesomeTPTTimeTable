@@ -1,0 +1,12 @@
+﻿<resources>
+    <string name="app_name">TPT Tunniplaan</string>
+    <string name="title_monday">Esmaspäev</string>
+    <string name="title_tuesday">Teisipäev</string>
+    <string name="title_wednesday">Kolmapäev</string>
+    <string name="title_thursday">Neljapäev</string>
+    <string name="title_friday">Reede</string>
+    <string name="untilEnd">Tunni lõpuni: </string>
+    <string name="untilStart">Tunni alguseni: </string>
+    <string name="gitText">Meie Git\'i repo</string>
+    <string name="cred">Tehtud TA-17E poolt</string>
+</resources>

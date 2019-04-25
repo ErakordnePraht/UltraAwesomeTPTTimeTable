@@ -22,7 +22,8 @@ namespace TPTtimetable
         DateTime endTime;
         DateTime startTime;
         View timedView;
-
+        String untilEndString;
+        String untilStartString;
 
         Activity context;
 
@@ -60,6 +61,11 @@ namespace TPTtimetable
             view.FindViewById<TextView>(Resource.Id.textView6).Text = "";
             view.FindViewById<TextView>(Resource.Id.textView7).Text = "";
 
+            // https://stackoverflow.com/questions/15897042/android-xamarin-get-resource-string-value-instead-of-int
+            Android.Content.Res.Resources res = context.Resources;
+            untilEndString = res.GetString(Resource.String.untilEnd) + " ";
+            untilStartString = res.GetString(Resource.String.untilStart) + " ";
+
             var timeOfDay = DateTime.Now;
             if (timeOfDay > items[position].start && timeOfDay < items[position].end)
             {
@@ -72,11 +78,11 @@ namespace TPTtimetable
                 remainingTime = remainingTime + new TimeSpan(0, 1, 0);
                 if (remainingTime > new TimeSpan(1, 0, 0))
                 {
-                    remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
+                    remainingTimerText.Text = untilEndString + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
                 }
                 else
                 {
-                    remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + "m.";
+                    remainingTimerText.Text = untilEndString + remainingTime.Minutes.ToString() + "m.";
                 }
                 TimerClass();
             }
@@ -99,11 +105,11 @@ namespace TPTtimetable
                 {
                     if (remainingTime > new TimeSpan(1, 0, 0))
                     {
-                        untilTimerText.Text = "Tunni alguseni: " + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
+                        untilTimerText.Text = untilStartString + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
                     }
                     else
                     {
-                        untilTimerText.Text = "Tunni alguseni: " + remainingTime.Minutes.ToString() + "m.";
+                        untilTimerText.Text = untilStartString + remainingTime.Minutes.ToString() + "m.";
                     }
                 }
             };
@@ -127,11 +133,11 @@ namespace TPTtimetable
                 remainingTime = remainingTime + new TimeSpan(0, 1, 0);
                 if (remainingTime > new TimeSpan(1, 0, 0))
                 {
-                    remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
+                    remainingTimerText.Text = untilEndString + remainingTime.Hours.ToString() + "h " + remainingTime.Minutes.ToString() + "m.";
                 }
                 else
                 {
-                    remainingTimerText.Text = "Tunni lõpuni: " + remainingTime.Minutes.ToString() + "m.";
+                    remainingTimerText.Text = untilEndString + remainingTime.Minutes.ToString() + "m.";
                 }
                 timer.Start(); // Restart timer
             }

@@ -81,6 +81,8 @@ namespace TPTtimetable
             var drawer = FindViewById<NavigationView>(Resource.Id.nav_view);
             var menuButton = FindViewById<ImageButton>(Resource.Id.menuButton);
 
+            var lang = Resources.Configuration.Locale;
+
             menuButton.Click += MenuButton_Click;
 
             drawer.NavigationItemSelected += Drawer_NavigationItemSelected;
